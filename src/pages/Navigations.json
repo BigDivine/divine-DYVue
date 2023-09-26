@@ -14,16 +14,7 @@
     "title": "组件说明",
     "view": "ViewDoc"
   },
-  {
-    "icon": "logo",
-    "title": "布局1",
-    "view": "room1"
-  },
-  {
-    "icon": "logo",
-    "title": "布局2",
-    "view": "room2"
-  },
+
   {
     "icon": "logo",
     "title": "一居室布局",
