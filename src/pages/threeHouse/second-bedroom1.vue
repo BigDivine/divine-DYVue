@@ -3,7 +3,7 @@
 * Email         : yangzelong@jiuqi.com.cn
 * Create Date   : 2023.09.26
 * Filename      : second-bedroom1.vue
-* Description   : 
+* Description   : 次卧1
 * Arguments     : 
 ********************************************************************-->
 <template>

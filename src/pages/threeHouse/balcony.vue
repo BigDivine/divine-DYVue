@@ -3,7 +3,7 @@
 * Email         : yangzelong@jiuqi.com.cn
 * Create Date   : 2023.09.26
 * Filename      : balcony.vue
-* Description   : 
+* Description   : 阳台
 * Arguments     : 
 ********************************************************************-->
 <template>

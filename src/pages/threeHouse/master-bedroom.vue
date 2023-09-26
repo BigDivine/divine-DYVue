@@ -3,7 +3,7 @@
 * Email         : yangzelong@jiuqi.com.cn
 * Create Date   : 2023.09.26
 * Filename      : master-bedroom.vue
-* Description   : 
+* Description   : 主卧
 * Arguments     : 
 ********************************************************************-->
 <template>

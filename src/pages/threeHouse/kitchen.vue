@@ -3,7 +3,7 @@
 * Email         : yangzelong@jiuqi.com.cn
 * Create Date   : 2023.09.26
 * Filename      : kitchen.vue
-* Description   : 
+* Description   : 厨房
 * Arguments     : 
 ********************************************************************-->
 <template>

@@ -3,7 +3,7 @@
 * Email         : yangzelong@jiuqi.com.cn
 * Create Date   : 2023.09.26
 * Filename      : living-room.vue
-* Description   : 
+* Description   : 客厅
 * Arguments     : 
 ********************************************************************-->
 <template>
