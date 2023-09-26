@@ -1,0 +1,22 @@
+[
+  {
+    "title": "github",
+    "url": "https://github.com/BigDivine?tab=repositories",
+    "icon": "github"
+  },
+  {
+    "title": "gitee码云",
+    "url": "https://gitee.com/divine_yang",
+    "icon": "gitee"
+  },
+  {
+    "title": "CSDN",
+    "url": "https://blog.csdn.net/weixin_42405014",
+    "icon": "csdn"
+  },
+  {
+    "title": "简书",
+    "url": "https://www.jianshu.com/u/1c2df708e348",
+    "icon": "jianshu"
+  }
+]

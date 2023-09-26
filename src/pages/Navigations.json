@@ -1,0 +1,37 @@
+[
+  {
+    "icon": "logo",
+    "title": "首页",
+    "view": "Home"
+  },
+  {
+    "icon": "logo",
+    "title": "首页配置",
+    "view": "HomeSetting"
+  },
+  {
+    "icon": "logo",
+    "title": "组件说明",
+    "view": "ViewDoc"
+  },
+  {
+    "icon": "logo",
+    "title": "布局1",
+    "view": "room1"
+  },
+  {
+    "icon": "logo",
+    "title": "布局2",
+    "view": "room2"
+  },
+  {
+    "icon": "logo",
+    "title": "一居室布局",
+    "view": "OneHouse"
+  },
+  {
+    "icon": "logo",
+    "title": "三居室布局",
+    "view": "ThreeHouse"
+  }
+]

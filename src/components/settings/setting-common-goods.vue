@@ -3,13 +3,12 @@
 </template>
 
 <script>
-export default {
-  name: "setting-common-goods",
-  data() {
-    return {};
-  },
-};
+  export default {
+    name: 'setting-common-goods',
+    data () {
+      return {};
+    }
+  };
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>
