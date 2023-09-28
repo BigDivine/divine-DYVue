@@ -11,6 +11,8 @@
     <div class="wall1">
       <div class="downBox90">90高地柜</div>
       <div class="upBox">80高柜</div>
+      <div class="elBox1">电器柜1</div>
+      <div class="elBox2">电器柜2</div>
       <div class="piping">水道</div>
       <div class="socket1"></div>
       <div class="socket2"></div>
@@ -33,6 +35,8 @@
       <div class="upBox">80高柜</div>
       <div class="flue">烟道</div>
       <div class="socket1"></div>
+      <div class="socket2"></div>
+      <div class="socket3"></div>
     </div>
   </div>
 </template>
@@ -74,11 +78,29 @@
         width: 30px;
         background: #000;
       }
+      .elBox1 {
+        // 电器柜
+        position: absolute;
+        left: 0px;
+        top: 80px;
+        width: 60px;
+        height: 50px;
+        background: #eaeaea;
+      }
+      .elBox2 {
+        // 电器柜
+        position: absolute;
+        left: 0px;
+        top: 130px;
+        width: 60px;
+        height: 50px;
+        background: #cccccc;
+      }
       .socket1 {
         // 预留插座
         position: absolute;
         left: 30px;
-        bottom: 110px;
+        bottom: 80px;
         height: 10px;
         width: 10px;
         background: #00f;
@@ -86,16 +108,16 @@
       .socket2 {
         // 预留插座
         position: absolute;
-        left: 40px;
-        bottom: 110px;
+        left: 30px;
+        bottom: 130px;
         height: 10px;
         width: 10px;
-        background: #0f0;
+        background: #00f;
       }
       .socket3 {
         // 预留插座
         position: absolute;
-        left: 50px;
+        right: 50px;
         bottom: 110px;
         height: 10px;
         width: 10px;
@@ -210,7 +232,26 @@
         width: 10px;
         background: #00f;
       }
+      .socket2 {
+        // 预留插座
+        position: absolute;
+        left: 80px;
+        bottom: 50px;
+        height: 10px;
+        width: 10px;
+        background: #00f;
+      }
+      .socket3 {
+        // 预留插座
+        position: absolute;
+        right: 20px;
+        bottom: 100px;
+        height: 10px;
+        width: 10px;
+        background: #00f;
+      }
     }
+
     .downBox90 {
       position: absolute;
       bottom: 0;

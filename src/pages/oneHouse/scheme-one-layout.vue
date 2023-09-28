@@ -8,58 +8,26 @@
 ********************************************************************-->
 <template>
   <div class="source-layout">
-    <div style="background:#f0f;width:960px;height:600px;position:relative;">
-      <div
-        style="position:absolute;top:0;left:0;width:240px;height:106px;background:var(--theme-border-color);color:#000000;text-align:center;"
-      >
-        衣柜
-      </div>
-      <div
-        style="position:absolute;bottom:0;right:40px;width:300px;height:400px;background:var(--theme-border-color);color:#000000;text-align:center;"
-      >
-        床
-      </div>
-      <div
-        style="position:absolute;bottom:0;left:240px;width:190px;height:400px;background:var(--theme-border-color);color:#000000;text-align:center;"
-      >
-        沙发
-      </div>
-      <div
-        style="position:absolute;bottom:0;left:430px;width:80px;height:180px;background:var(--theme-border-color);color:#000000;text-align:center;"
-      >
-        90*40桌子
-      </div>
-      <div
-        style="position:absolute;top:0;left:480px;width:200px;height:120px;background:var(--theme-border-color);color:#000000;text-align:center;"
-      >
-        100*60桌子
-      </div>
-      <div
-        style="position:absolute;top:0;left:680px;width:180px;height:100px;background:var(--theme-border-color);color:#000000;text-align:center;"
-      >
-        90*50桌子
-      </div>
-      <div
-        style="position:absolute;bottom:180px;left:430px;width:80px;height:80px;background:var(--theme-border-color);color:#000000;text-align:center;"
-      >
-        40*40床头柜
-      </div>
-      <div
-        style="position:absolute;bottom:0px;left:0;width:240px;height:90px;background:var(--theme-border-color);color:#000000;text-align:center;"
-      >
-        120*45电视柜
-      </div>
+    <div class="container">
+      <div class="yigui">120*53衣柜</div>
+      <div class="chuang">200*150床</div>
+      <div class="shafa">200*95沙发</div>
+      <div class="zhuozi9040">90*40桌子</div>
+      <div class="zhuozi10060">100*60桌子</div>
+      <div class="zhuozi9050">90*50桌子</div>
+      <div class="zhuozi4040">40*40柜</div>
+      <div class="dianshigui">120*45电柜</div>
       <!-- 入户门 -->
       <div
-        style="position:absolute;top:0;left:240px;width:170px;height:20px;background: #000;color:#fff;text-align:center;"
+        style="position:absolute;top:0;left:120px;width:85px;height:10px;background: #000;color:#fff;text-align:center;"
       ></div>
       <!--窗帘暖气 -->
       <div
-        style="position:absolute;top:0;right:0;width:40px;height:100%;background: #000;color:#fff;text-align:center;"
+        style="position:absolute;top:120px;bottom:0px;right:0;width:20px;background: #000;color:#fff;text-align:center;"
       ></div>
       <!--阳台门 -->
       <div
-        style="position:absolute;top:120px;right:0;width:20px;height:120px;background: #f00; "
+        style="position:absolute;top:60px;right:0;width:10px;height:60px;background: #f00; "
       ></div>
     </div>
   </div>
@@ -67,10 +35,80 @@
 
 <script>
   export default {
-    name: 'scheme-one-layout'
+    name: 'scheme-two-layout'
   };
 </script>
 <style lang="scss" scoped>
   .source-layout {
+    .container {
+      background: #fff;
+      width: 480px;
+      height: 300px;
+      margin-left: 40px;
+      margin-top: 20px;
+      position: relative;
+      .common {
+        position: absolute;
+        background: var(--theme-border-color);
+        color: #000000;
+        text-align: center;
+      }
+      .yigui {
+        @extend .common;
+        top: 0;
+        left: 0px;
+        height: 53px;
+        width: 120px;
+      }
+      .chuang {
+        @extend .common;
+        bottom: 0;
+        right: 20px;
+        width: 150px;
+        height: 200px;
+      }
+      .shafa {
+        @extend .common;
+        left: 120px;
+        bottom: 0px;
+        width: 95px;
+        height: 200px;
+      }
+      .zhuozi9040 {
+        @extend .common;
+        bottom: 60px;
+        left: 0px;
+        height: 90px;
+        width: 40px;
+      }
+      .zhuozi10060 {
+        @extend .common;
+        top: 0px;
+        right: 150px;
+        width: 100px;
+        height: 60px;
+      }
+      .zhuozi9050 {
+        @extend .common;
+        top: 0;
+        right: 0px;
+        width: 90px;
+        height: 50px;
+      }
+      .zhuozi4040 {
+        @extend .common;
+        bottom: 120px;
+        left: 215px;
+        width: 40px;
+        height: 40px;
+      }
+      .dianshigui {
+        @extend .common;
+        bottom: 0px;
+        left: 215px;
+        width: 45px;
+        height: 120px;
+      }
+    }
   }
 </style>

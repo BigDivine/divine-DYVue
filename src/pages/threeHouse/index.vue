@@ -42,8 +42,8 @@
       return {
         groupChecked: null,
         groups: [
-          { title: '客厅', name: 'LivingRoom', type: 'LivingRoom' },
-          { title: '厨房', name: 'Kitchen', type: 'Kitchen' },
+          { title: '客厅（开关*2；插座*21）', name: 'LivingRoom', type: 'LivingRoom' },
+          { title: '厨房（插座*10）', name: 'Kitchen', type: 'Kitchen' },
           { title: '阳台', name: 'Balcony', type: 'Balcony' },
           { title: '主卧', name: 'MasterBedroom', type: 'MasterBedroom' },
           { title: '次卧1', name: 'SecondBedroom1', type: 'SecondBedroom1' },
