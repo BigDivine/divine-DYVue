@@ -68,10 +68,10 @@
     transition: transform 0.35s cubic-bezier(0.4, 0.4, 0.25, 1.35);
   }
   .dy-switch-on {
-    background-color: var(--theme-color);
+    background-color: $dy-primary-color;
   }
   .dy-switch-on:before {
-    background-color: var(--theme-color);
+    background-color: $dy-primary-color;
   }
   .dy-switch-on:after {
     transform: translateX(20px);

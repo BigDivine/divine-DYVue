@@ -1,20 +1,26 @@
+<!--********************************************************************
+* Author        : yangzelong
+* Email         : yangzelong@jiuqi.com.cn
+* Create Date   : 2024.01.18
+* Filename      : home-setting.vue
+* Description   : 
+* Arguments     : 
+********************************************************************-->
 <template>
-  <div class="PRHomeSettingStyle">
-    <!-- <div class="PRHomeToolbar">工具栏，放按钮</div> -->
-    <div class="PRHomeContain">
-      <div class="PRHomeFunction">
+  <div class="HomeSetting">
+    <!-- <div class="HomeToolbar">工具栏，放按钮</div> -->
+    <div class="HomeContain">
+      <div class="HomeFunction">
         <div
           v-for="(func, index) in functions"
           :key="index"
-          :class="
-            checked && checked.name === func.name ? 'PRHomeFuncItemChecked' : 'PRHomeFuncItem'
-          "
+          :class="checked && checked.name === func.name ? 'HomeFuncItemChecked' : 'HomeFuncItem'"
           @click="functionClick(func)"
         >
           {{ func.title }}
         </div>
       </div>
-      <div class="PRHomeFuncMain">
+      <div class="HomeFuncMain">
         <component v-if="checked" :is="checked.componentType"></component>
       </div>
     </div>
@@ -24,7 +30,7 @@
 <script>
   import { settingComponents } from '@/components/settings';
   export default {
-    name: 'p-r-home-setting',
+    name: 'HomeSetting',
     components: settingComponents,
     data () {
       return {
@@ -51,47 +57,46 @@
     }
   };
 </script>
-
 <style lang="scss" scoped>
-  .PRHomeSettingStyle {
+  .HomeSetting {
     display: flex;
     flex-direction: column;
     height: 100%;
     width: 100%;
-    border-top: 1px solid var(--theme-border-color);
-    border-bottom: 1px solid var(--theme-border-color);
-    // .PRHomeToolbar {
-    //   background: var(--theme-border-color);
+    border-top: 1px solid $dy-border-color;
+    border-bottom: 1px solid $dy-border-color;
+    // .HomeToolbar {
+    //   background: $dy-border-color;
     // }
-    .PRHomeContain {
+    .HomeContain {
       display: flex;
-      border-top: 1px solid var(--theme-border-color);
+      border-top: 1px solid $dy-border-color;
       flex: 1;
-      .PRHomeFunction {
+      .HomeFunction {
         width: 200px;
         height: 100%;
-        border-right: 1px solid var(--theme-border-color);
-        color: var(--theme-font-color);
-        .PRHomeFuncItem {
+        border-right: 1px solid $dy-border-color;
+        color: $dy-font-color;
+        .HomeFuncItem {
           cursor: pointer;
-          background: var(--theme-color-argb);
+          background: $dy-bg-color;
           border: 1px solid #ffffff;
           height: 50px;
           line-height: 45px;
           font-size: 16px;
           text-align: center;
         }
-        .PRHomeFuncItem:hover {
+        .HomeFuncItem:hover {
           background: #ffffff;
-          border: 1px solid var(--theme-border-color);
+          border: 1px solid $dy-border-color;
         }
-        .PRHomeFuncItemChecked {
-          @extend .PRHomeFuncItem;
+        .HomeFuncItemChecked {
+          @extend .HomeFuncItem;
           background: #ffffff;
-          border: 1px solid var(--theme-border-color);
+          border: 1px solid $dy-border-color;
         }
       }
-      .PRHomeFuncMain {
+      .HomeFuncMain {
         flex: 1;
         height: 100%;
       }

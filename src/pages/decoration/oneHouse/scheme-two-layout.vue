@@ -49,7 +49,7 @@
       position: relative;
       .common {
         position: absolute;
-        background: var(--theme-border-color);
+        background: $dy-border-color;
         color: #000000;
         text-align: center;
       }

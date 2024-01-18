@@ -59,8 +59,14 @@ exports.cssLoaders = function(options) {
   return {
     css: generateLoaders(),
     postcss: generateLoaders(),
+    less: generateLoaders('less'),
     sass: generateLoaders('sass', { indentedSyntax: true }),
-    scss: generateLoaders('sass'),
+    scss: generateLoaders('sass').concat({
+      loader: 'sass-resources-loader',
+      options: {
+        resources: path.resolve(__dirname, '../src/assets/theme/dy.scss'),
+      },
+    }),
     stylus: generateLoaders('stylus'),
     styl: generateLoaders('stylus'),
   };
@@ -95,7 +101,7 @@ exports.createNotifierCallback = () => {
       title: packageConfig.name,
       message: severity + ': ' + error.name,
       subtitle: filename || '',
-      icon: path.join(__dirname, 'logo.png'),
+      icon: path.join(__dirname, 'logo-dy.png'),
     });
   };
 };

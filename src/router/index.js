@@ -1,11 +1,17 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import IndexView from '@/pages/index';
-import PRHomeView from '@/pages/p-r-home';
-import PRHomeSettingView from '@/pages/p-r-home-setting';
-import PRViewDocView from '@/pages/p-r-view-doc';
-import PROneHouseView from '@/pages/oneHouse';
-import PRThreeHouseView from '@/pages/threeHouse';
+import HomeView from '@/pages/home';
+import HomeSettingView from '@/pages/home-setting';
+import ViewDocView from '@/pages/view-doc';
+
+import OneHouseView from '@/pages/decoration/oneHouse';
+import ThreeHouseView from '@/pages/decoration/threeHouse';
+import ToiletWallView from '@/pages/decoration/toiletWall';
+import KitchenView from '@/pages/decoration/kitchen/index';
+
+import DownloadPageView from '@/pages/downloadPage';
+import IframePageView from '@/pages/iframe/iframe';
 
 Vue.use(Router);
 const routes = [
@@ -16,28 +22,48 @@ const routes = [
     children: [
       {
         path: '/Home',
-        name: 'HomeRP',
-        component: PRHomeView
+        name: 'Home',
+        component: HomeView
       },
       {
         path: '/HomeSetting',
-        name: 'HomeSettingRP',
-        component: PRHomeSettingView
+        name: 'HomeSetting',
+        component: HomeSettingView
       },
       {
         path: '/ViewDoc',
-        name: 'ViewDocRP',
-        component: PRViewDocView
+        name: 'ViewDoc',
+        component: ViewDocView
       },
       {
         path: '/OneHouse',
-        name: 'OneHouseRP',
-        component: PROneHouseView
+        name: 'OneHouse',
+        component: OneHouseView
       },
       {
         path: '/ThreeHouse',
-        name: 'ThreeHouseRP',
-        component: PRThreeHouseView
+        name: 'ThreeHouse',
+        component: ThreeHouseView
+      },
+      {
+        path: '/ToiletWall',
+        name: 'ToiletWall',
+        component: ToiletWallView
+      },
+      {
+        path: '/DownloadPage',
+        name: 'DownloadPage',
+        component: DownloadPageView
+      },
+      {
+        path: '/IframePage',
+        name: 'IframePage',
+        component: IframePageView
+      },
+      {
+        path: '/Kitchen',
+        name: 'Kitchen',
+        component: KitchenView
       }
     ]
   }

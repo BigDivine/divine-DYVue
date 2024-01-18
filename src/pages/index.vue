@@ -3,28 +3,32 @@
     <div class="indexHeader">
       <div class="indexHeaderContainer">
         <div class="indexHeaderLogo">
-          <img src="@/assets/logo.png" />
+          <img src="@/assets/logo-dy.png" />
           <div>DY项目后台管理系统</div>
         </div>
       </div>
       <div class="indexHeaderThird">
         <div class="indexLinkStyle" v-for="(item, index) in thirdLinkData" :key="index">
-          <img :src="require('@/assets/icons/ic_third_' + item.icon + '.png')" />
+          <div class="iconStyle">
+            <img :src="require('@/assets/icons/ic_third_' + item.icon + '.png')" />
+          </div>
           <a :href="item.url" target="_blank">
             {{ item.title }}
           </a>
         </div>
       </div>
     </div>
-    <div class="indexNavigator">
+    <DYMenu>
       <DYMenuItem
         v-for="(item, index) in NavigationsData"
         :key="index"
         :icon="require('@/assets/' + item.icon + '.png')"
         :title="item.title"
+        :children="item.children"
         @item-click="menuItemClick(item)"
+        @sub-item-click="menuItemClick"
       ></DYMenuItem>
-    </div>
+    </DYMenu>
     <div class="indexContent">
       <div class="indexMain">
         <router-view />
@@ -40,18 +44,21 @@
   import thirdLinkData from './ThirdLinks.json';
   import NavigationsData from './Navigations.json';
 
+  import DYMenu from '@/components/dy-menu';
   import DYMenuItem from '@/components/dy-menu-item';
   export default {
     name: 'index',
-    components: { DYMenuItem },
+    components: { DYMenu, DYMenuItem },
     data () {
       return { thirdLinkData, NavigationsData };
+    },
+    created () {
+      this.menuItemClick(NavigationsData[0]);
     },
     methods: {
       uploadFile (e) {
         let files = e.target.files;
         let file = files[0];
-        console.log(e, file);
         let param = new FormData(); // 创建form对象
         param.append('file', file); // 通过append向form对象添加数据
         this.$http
@@ -68,8 +75,7 @@
           });
       },
       menuItemClick (item) {
-        console.log('menuItemClick', item);
-        this.$router.push({ path: `/${item.view}`, name: `${item.view}RP` });
+        this.$router.push({ path: `/${item.view}`, name: `${item.view}` });
       }
     }
   };
@@ -85,8 +91,7 @@
       height: 80px;
       width: 100%;
       display: flex;
-      border-bottom: 1px solid var(--theme-border-color);
-      background: linear-gradient(to right, var(--theme-color), var(--theme-color-rgba));
+      background: linear-gradient(to right, $dy-primary-color, $dy-bg-color);
       .indexHeaderContainer {
         flex: 1;
         .indexHeaderLogo {
@@ -94,7 +99,7 @@
           display: flex;
           align-items: center;
           padding: 0 20px;
-          color: var(--theme-font-color);
+          color: $dy-font-color;
           font-weight: 600;
           font-style: bold;
           font-size: 16px;
@@ -103,23 +108,12 @@
             width: 60px;
           }
         }
-        // .indexHeaderNavi {
-        //   display: flex;
-        //   align-items: flex-end;
-        //   overflow: auto;
-        //   .indexHeaderNaviItem {
-        //     cursor: pointer;
-        //     text-align: center;
-        //     white-space: nowrap;
-        //     padding: 20px;
-        //     font-size: 16px;
-        //   }
-        // }
       }
 
       .indexHeaderThird {
         width: 100px;
         height: 80px;
+
         display: flex;
         align-items: center;
         flex-direction: column;
@@ -128,26 +122,30 @@
           width: 100%;
           display: flex;
           align-items: center;
-          img {
+          .iconStyle {
             height: 18px;
             width: 18px;
+            overflow: hidden;
+            img {
+              height: 18px;
+              width: 18px;
+              filter: drop-shadow($dy-primary-color 18px 0);
+              transform: translateX(-18px);
+            }
           }
           a {
             height: 20px;
+            line-height: 20px;
             flex: 1;
             margin-left: 5px;
-            color: var(--theme-font-color);
+            color: $dy-font-color;
             font-style: bold;
             font-size: 12px;
           }
         }
       }
     }
-    .indexNavigator {
-      height: 40px;
-      display: flex;
-      overflow: auto;
-    }
+
     .indexContent {
       flex: 1;
       display: flex;

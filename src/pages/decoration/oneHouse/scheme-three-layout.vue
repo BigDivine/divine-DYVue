@@ -17,17 +17,18 @@
       <div class="zhuozi9050">90*50桌子</div>
       <div class="zhuozi4040">40*40柜</div>
       <div class="dianshigui">120*45电柜</div>
+      <div class="waiyigui">100*60外衣柜</div>
       <!-- 入户门 -->
       <div
         style="position:absolute;top:0;left:120px;width:85px;height:10px;background: #000;color:#fff;text-align:center;"
       ></div>
       <!--窗帘暖气 -->
       <div
-        style="position:absolute;top:120px;bottom:0px;right:0;width:20px;background: #000;color:#fff;text-align:center;"
+        style="position:absolute;top:120px;bottom:0px;right:100px;width:20px;background: #000;color:#fff;text-align:center;"
       ></div>
       <!--阳台门 -->
       <div
-        style="position:absolute;top:60px;right:0;width:10px;height:60px;background: #f00; "
+        style="position:absolute;top:60px;right:100px;width:10px;height:60px;background: #f00; "
       ></div>
     </div>
   </div>
@@ -42,14 +43,14 @@
   .source-layout {
     .container {
       background: #fff;
-      width: 480px;
+      width: 580px;
       height: 300px;
       margin-left: 40px;
       margin-top: 20px;
       position: relative;
       .common {
         position: absolute;
-        background: var(--theme-border-color);
+        background: $dy-border-color;
         color: #000000;
         text-align: center;
       }
@@ -63,51 +64,60 @@
       .chuang {
         @extend .common;
         bottom: 0;
-        right: 20px;
+        right: 120px;
         width: 150px;
         height: 200px;
       }
       .shafa {
         @extend .common;
-        left: 120px;
+        left: 200px;
         bottom: 0px;
         width: 95px;
         height: 200px;
       }
       .zhuozi9040 {
         @extend .common;
-        bottom: 60px;
-        left: 0px;
-        height: 90px;
-        width: 40px;
+        top: 0;
+        right: 0px;
+        width: 90px;
+        height: 40px;
       }
       .zhuozi10060 {
         @extend .common;
-        top: 0px;
-        right: 150px;
-        width: 100px;
-        height: 60px;
+        bottom: 0px;
+        left: 0px;
+        height: 100px;
+        width: 60px;
       }
       .zhuozi9050 {
         @extend .common;
         top: 0;
-        right: 0px;
+        right: 120px;
         width: 90px;
         height: 50px;
       }
       .zhuozi4040 {
         @extend .common;
-        bottom: 120px;
-        left: 215px;
+        top: 0px;
+        right: 270px;
         width: 40px;
         height: 40px;
       }
       .dianshigui {
         @extend .common;
+        top: 0px;
+        right: 270px;
+        height: 45px;
+        width: 120px;
+        background: #f0f;
+      }
+      .waiyigui {
+        @extend .common;
         bottom: 0px;
-        left: 215px;
-        width: 45px;
-        height: 120px;
+        right: 0px;
+        height: 60px;
+        width: 100px;
+        background: #000;
       }
     }
   }

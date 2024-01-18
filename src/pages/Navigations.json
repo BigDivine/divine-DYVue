@@ -1,28 +1,66 @@
 [
   {
-    "icon": "logo",
+    "name": "Home",
+    "icon": "logo-dy",
     "title": "首页",
-    "view": "Home"
+    "view": "Home",
+    "children": []
   },
   {
-    "icon": "logo",
+    "name": "HomeSetting",
+    "icon": "logo-dy",
     "title": "首页配置",
-    "view": "HomeSetting"
+    "view": "HomeSetting",
+    "children": []
   },
   {
-    "icon": "logo",
+    "name": "ViewDoc",
+    "icon": "logo-dy",
     "title": "组件说明",
-    "view": "ViewDoc"
-  },
-
-  {
-    "icon": "logo",
-    "title": "一居室布局",
-    "view": "OneHouse"
+    "view": "ViewDoc",
+    "children": []
   },
   {
-    "icon": "logo",
-    "title": "三居室布局",
-    "view": "ThreeHouse"
+    "name": "HousePage",
+    "icon": "logo-dy",
+    "title": "装修",
+    "view": "HousePage",
+    "children": [
+      {
+        "name": "OneHouse",
+        "icon": "logo-dy",
+        "title": "一居室布局",
+        "view": "OneHouse",
+        "children": []
+      },
+      {
+        "name": "ThreeHouse",
+        "icon": "logo-dy",
+        "title": "三居室布局",
+        "view": "ThreeHouse",
+        "children": []
+      },
+      {
+        "name": "ToiletWall",
+        "icon": "logo-dy",
+        "title": "卫生间墙",
+        "view": "ToiletWall",
+        "children": []
+      },
+      {
+        "name": "Kitchen",
+        "icon": "logo-dy",
+        "title": "厨房",
+        "view": "Kitchen",
+        "children": []
+      }
+    ]
+  },
+  {
+    "name": "DownloadPage",
+    "icon": "logo-dy",
+    "title": "下载页",
+    "view": "DownloadPage",
+    "children": []
   }
 ]

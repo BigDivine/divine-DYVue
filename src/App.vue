@@ -6,21 +6,7 @@
 
 <script>
   export default {
-    name: 'App',
-    mounted () {
-      document
-        .getElementById('app')
-        .style.setProperty('--theme-color', localStorage.getItem('theme-color'));
-      document
-        .getElementById('app')
-        .style.setProperty('--theme-color-rgba', localStorage.getItem('theme-color-rgba'));
-      document
-        .getElementById('app')
-        .style.setProperty('--theme-font-color', localStorage.getItem('theme-font-color'));
-      document
-        .getElementById('app')
-        .style.setProperty('--theme-border-color', localStorage.getItem('theme-border-color'));
-    }
+    name: 'App'
   };
 </script>
 
@@ -29,6 +15,6 @@
     height: 100%;
     width: 100%;
     margin: 0;
-    background: var(--theme-color-rgba);
+    background: $dy-bg-color;
   }
 </style>

@@ -20,16 +20,18 @@
 
   import SchemeOneLayout from './scheme-one-layout.vue';
   import SchemeTwoLayout from './scheme-two-layout.vue';
+  import SchemeThreeLayout from './scheme-three-layout.vue';
   export default {
     name: 'OneHouse',
-    components: { DyListGroup, SourceLayout, SchemeOneLayout, SchemeTwoLayout },
+    components: { DyListGroup, SourceLayout, SchemeOneLayout, SchemeTwoLayout, SchemeThreeLayout },
     data () {
       return {
         groupChecked: null,
         groups: [
           { title: '原始布局', name: 'layout', type: 'source-layout' },
           { title: '布局一', name: 'layout1', type: 'scheme-one-layout' },
-          { title: '布局二', name: 'layout2', type: 'scheme-two-layout' }
+          { title: '布局二', name: 'layout2', type: 'scheme-two-layout' },
+          { title: '布局三', name: 'layout3', type: 'scheme-three-layout' }
         ]
       };
     },

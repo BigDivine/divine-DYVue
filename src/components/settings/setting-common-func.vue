@@ -294,8 +294,8 @@
       .toolItem {
         width: 60px;
         text-align: center;
-        border: 1px solid var(--theme-color);
-        color: var(--theme-color);
+        border: 1px solid $dy-primary-color;
+        color: $dy-primary-color;
         border-radius: 5px;
       }
     }
@@ -303,15 +303,15 @@
       display: flex;
       .rowButton {
         cursor: pointer;
-        border: 1px solid var(--theme-color);
+        border: 1px solid $dy-primary-color;
         border-radius: 5px;
         padding: 2px 8px;
         font-size: 10px;
         margin-right: 10px;
-        color: var(--theme-color);
+        color: $dy-primary-color;
       }
       .rowButton:hover {
-        background: var(--theme-color);
+        background: $dy-primary-color;
         color: #ffffff;
       }
       .delBtn {

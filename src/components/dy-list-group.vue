@@ -52,15 +52,15 @@
   .DyListGroup {
     height: 100%;
     width: 100%;
-    border-top: 1px solid var(--theme-border-color);
-    border-bottom: 1px solid var(--theme-border-color);
+    border-top: 1px solid $dy-border-color;
+    border-bottom: 1px solid $dy-border-color;
     .DyListGroupList {
       height: 100%;
       width: 100%;
-      color: var(--theme-font-color);
+      color: $dy-font-color;
       .DyListGroupItem {
         cursor: pointer;
-        background: var(--theme-color-argb);
+        background: $dy-bg-color;
         border: 1px solid #ffffff;
         height: 50px;
         line-height: 45px;
@@ -69,12 +69,12 @@
       }
       .DyListGroupItem:hover {
         background: #ffffff;
-        border: 1px solid var(--theme-border-color);
+        border: 1px solid $dy-border-color;
       }
       .DyListGroupItemChecked {
         @extend .DyListGroupItem;
         background: #ffffff;
-        border: 1px solid var(--theme-border-color);
+        border: 1px solid $dy-border-color;
       }
     }
     .DyListGroupContent {
