@@ -18,17 +18,7 @@
         </div>
       </div>
     </div>
-    <DYMenu>
-      <DYMenuItem
-        v-for="(item, index) in NavigationsData"
-        :key="index"
-        :icon="require('@/assets/' + item.icon + '.png')"
-        :title="item.title"
-        :children="item.children"
-        @item-click="menuItemClick(item)"
-        @sub-item-click="menuItemClick"
-      ></DYMenuItem>
-    </DYMenu>
+    <DYMenu :navList="NavigationsData" @item-click="menuItemClick"> </DYMenu>
     <div class="indexContent">
       <div class="indexMain">
         <router-view />
@@ -49,35 +39,37 @@
   export default {
     name: 'index',
     components: { DYMenu, DYMenuItem },
-    data () {
+    data() {
       return { thirdLinkData, NavigationsData };
     },
-    created () {
-      this.menuItemClick(NavigationsData[0]);
+    created() {
+      this.menuItemClick({
+        view: 'Home',
+      });
     },
     methods: {
-      uploadFile (e) {
+      uploadFile(e) {
         let files = e.target.files;
         let file = files[0];
         let param = new FormData(); // 创建form对象
         param.append('file', file); // 通过append向form对象添加数据
         this.$http
           .post('/upload/img', param, {
-            headers: { 'Content-Type': 'multipart/form-data' }
+            headers: { 'Content-Type': 'multipart/form-data' },
           })
-          .then(function (response) {
+          .then(function(response) {
             console.log(response);
             e.target.value = '';
           })
-          .catch(function (error) {
+          .catch(function(error) {
             console.log(error);
             e.target.value = '';
           });
       },
-      menuItemClick (item) {
+      menuItemClick(item) {
         this.$router.push({ path: `/${item.view}`, name: `${item.view}` });
-      }
-    }
+      },
+    },
   };
 </script>
 

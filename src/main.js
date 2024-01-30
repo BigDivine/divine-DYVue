@@ -5,10 +5,12 @@ import App from './App';
 import router from './router';
 
 import ViewUI from 'view-design';
-// import 'view-design/dist/styles/iview.css';
-import '@/assets/less/iViewTheme.less';
-// import '@/assets/theme/dy.scss';
+import VXETable from 'vxe-table';
 
+import '@/assets/theme/view-design-theme.less';
+import '@/assets/theme/vxe-table-theme.scss';
+
+Vue.use(VXETable);
 Vue.use(axios);
 Vue.use(ViewUI);
 

@@ -8,13 +8,54 @@
 ********************************************************************-->
 <template>
   <div class="DyMenu">
-    <slot></slot>
+    <DYMenuItem
+      v-for="(item, index) in navList"
+      :key="index"
+      :icon="require('@/assets/' + item.icon + '.png')"
+      :menu="item"
+      :expand="index === expandIndex"
+      @item-click="menuItemClick"
+      @nav-click="navClick(item, index)"
+    ></DYMenuItem>
+    <slot v-if="!navList || !navList.length"></slot>
   </div>
 </template>
 
 <script>
+  import DYMenuItem from './dy-menu-item';
   export default {
-    name: 'DyMenu'
+    name: 'DyMenu',
+    components: { DYMenuItem },
+    props: {
+      navList: {
+        type: Array,
+        default: () => [],
+      },
+
+      mulExpand: {
+        type: Boolean,
+        default: false,
+      },
+    },
+    data() {
+      return {
+        expandIndex: 0,
+      };
+    },
+
+    methods: {
+      navClick(item, index) {
+        if (this.expandIndex === index) {
+          this.expandIndex = -1;
+          return;
+        }
+        this.expandIndex = index;
+      },
+      menuItemClick(menu) {
+        this.$emit('item-click', menu);
+        this.expandIndex = -1;
+      },
+    },
   };
 </script>
 <style lang="scss" scoped>

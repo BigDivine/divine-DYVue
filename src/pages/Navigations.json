@@ -1,5 +1,64 @@
 [
   {
+    "name": "WorkDemo",
+    "icon": "logo-dy",
+    "title": "工作（DEMO）",
+    "view": "WorkDemo",
+    "children": [
+      {
+        "name": "VxeTable",
+        "icon": "logo-dy",
+        "title": "VxeTable",
+        "view": "VxeTable",
+        "children": []
+      }
+    ]
+  },
+  {
+    "name": "LifeDemo",
+    "icon": "logo-dy",
+    "title": "生活（DEMO）",
+    "view": "LifeDemo",
+    "children": [
+      {
+        "name": "Decoration",
+        "icon": "logo-dy",
+        "title": "装修",
+        "view": "Decoration",
+        "children": [
+          {
+            "name": "OneHouse",
+            "icon": "logo-dy",
+            "title": "一居室布局",
+            "view": "OneHouse",
+            "children": []
+          },
+          {
+            "name": "ThreeHouse",
+            "icon": "logo-dy",
+            "title": "三居室布局",
+            "view": "ThreeHouse",
+            "children": []
+          },
+          {
+            "name": "ToiletWall",
+            "icon": "logo-dy",
+            "title": "卫生间墙",
+            "view": "ToiletWall",
+            "children": []
+          },
+          {
+            "name": "Kitchen",
+            "icon": "logo-dy",
+            "title": "厨房",
+            "view": "Kitchen",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
     "name": "Home",
     "icon": "logo-dy",
     "title": "首页",
@@ -20,47 +79,12 @@
     "view": "ViewDoc",
     "children": []
   },
+
   {
-    "name": "HousePage",
-    "icon": "logo-dy",
-    "title": "装修",
-    "view": "HousePage",
-    "children": [
-      {
-        "name": "OneHouse",
-        "icon": "logo-dy",
-        "title": "一居室布局",
-        "view": "OneHouse",
-        "children": []
-      },
-      {
-        "name": "ThreeHouse",
-        "icon": "logo-dy",
-        "title": "三居室布局",
-        "view": "ThreeHouse",
-        "children": []
-      },
-      {
-        "name": "ToiletWall",
-        "icon": "logo-dy",
-        "title": "卫生间墙",
-        "view": "ToiletWall",
-        "children": []
-      },
-      {
-        "name": "Kitchen",
-        "icon": "logo-dy",
-        "title": "厨房",
-        "view": "Kitchen",
-        "children": []
-      }
-    ]
-  },
-  {
-    "name": "DownloadPage",
+    "name": "Download",
     "icon": "logo-dy",
     "title": "下载页",
-    "view": "DownloadPage",
+    "view": "Download",
     "children": []
   }
 ]

@@ -10,8 +10,10 @@ import ThreeHouseView from '@/pages/decoration/threeHouse';
 import ToiletWallView from '@/pages/decoration/toiletWall';
 import KitchenView from '@/pages/decoration/kitchen/index';
 
-import DownloadPageView from '@/pages/downloadPage';
-import IframePageView from '@/pages/iframe/iframe';
+import DownloadView from '@/pages/downloadPage';
+import IframeView from '@/pages/iframe/iframe';
+
+import VxeTableView from '@/pages/vxeTable/index';
 
 Vue.use(Router);
 const routes = [
@@ -51,19 +53,24 @@ const routes = [
         component: ToiletWallView
       },
       {
-        path: '/DownloadPage',
-        name: 'DownloadPage',
-        component: DownloadPageView
+        path: '/Download',
+        name: 'Download',
+        component: DownloadView
       },
       {
         path: '/IframePage',
         name: 'IframePage',
-        component: IframePageView
+        component: IframeView
       },
       {
         path: '/Kitchen',
         name: 'Kitchen',
         component: KitchenView
+      },
+      {
+        path: '/VxeTable',
+        name: 'VxeTable',
+        component: VxeTableView
       }
     ]
   }
