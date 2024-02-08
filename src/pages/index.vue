@@ -142,9 +142,11 @@
       flex: 1;
       display: flex;
       flex-direction: column;
+      overflow: hidden;
       .indexMain {
         flex: 1;
         width: 100%;
+        overflow: hidden;
       }
       .indexFooter {
         height: 50px;

@@ -55,6 +55,12 @@
             "children": []
           }
         ]
+      },
+      {
+        "name": "CFActivity",
+        "icon": "logo-dy",
+        "title": "CF抽奖",
+        "view": "CFActivity"
       }
     ]
   },

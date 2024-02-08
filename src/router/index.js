@@ -14,6 +14,7 @@ import DownloadView from '@/pages/downloadPage';
 import IframeView from '@/pages/iframe/iframe';
 
 import VxeTableView from '@/pages/vxeTable/index';
+import CFActivityView from '@/pages/cf-activity';
 
 Vue.use(Router);
 const routes = [
@@ -71,6 +72,11 @@ const routes = [
         path: '/VxeTable',
         name: 'VxeTable',
         component: VxeTableView
+      },
+      {
+        path: '/CFActivity',
+        name: 'CFActivity',
+        component: CFActivityView
       }
     ]
   }
