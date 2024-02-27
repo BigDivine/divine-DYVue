@@ -11,6 +11,20 @@
         "title": "VxeTable",
         "view": "VxeTable",
         "children": []
+      },
+      {
+        "name": "ViewDoc",
+        "icon": "logo-dy",
+        "title": "组件说明",
+        "view": "ViewDoc",
+        "children": []
+      },
+      {
+        "name": "Download",
+        "icon": "logo-dy",
+        "title": "下载页",
+        "view": "Download",
+        "children": []
       }
     ]
   },
@@ -76,21 +90,6 @@
     "icon": "logo-dy",
     "title": "首页配置",
     "view": "HomeSetting",
-    "children": []
-  },
-  {
-    "name": "ViewDoc",
-    "icon": "logo-dy",
-    "title": "组件说明",
-    "view": "ViewDoc",
-    "children": []
-  },
-
-  {
-    "name": "Download",
-    "icon": "logo-dy",
-    "title": "下载页",
-    "view": "Download",
     "children": []
   }
 ]

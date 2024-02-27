@@ -1,28 +1,25 @@
 <template>
   <div class="settingCommonFunc">
-    <!-- <div>{{ '设置首页常用功能（图片，路由，名称，id）' }}</div> -->
-    <div class="toolbarStyle">
-      <div class="toolItem" @click="showModalMethod()">新增</div>
-    </div>
-    <div>
-      <Table :columns="functionsColumns" :data="functionsData">
-        <template slot-scope="{ row }" slot="title">
-          <div>{{ row.functionTitle }}</div>
-        </template>
-        <template slot-scope="{ row }" slot="thumb">
-          <img style="heigth: 40px; width: 40px" :src="row.functionImg" />
-        </template>
-        <template slot-scope="{ row }" slot="isShow">
-          <div>{{ row.functionShow ? '是' : '否' }}</div>
-        </template>
-        <template slot-scope="{ row }" slot="action">
-          <div class="rowButtonContain">
-            <div class="rowButton" @click="previewRow(row)">查看</div>
-            <div class="rowButton" @click="updateRow(row)">编辑</div>
-            <div class="delBtn" @click="deleteRow(row)">删除</div>
-          </div>
-        </template>
-      </Table>
+    <div class="tableClass">
+      <DaTreeTable
+        :mode="2"
+        :showTree="false"
+        :isTableSelect="false"
+        tableTitle="设置首页常用功能（图片，路由，名称，id）"
+        :tableRowTool="[
+          { name: 'readRow', title: '查看' },
+          { name: 'upRow', title: '编辑' },
+          { name: 'delRow', title: '删除' },
+        ]"
+        :tableTools="[{ name: 'addRow', title: '新增' }]"
+        :columns="functionsColumns"
+        :data="functionsData"
+        @table-search="tableSearch"
+        @table-tool-click="tableToolClick"
+        @table-row-tool-click="tableRowToolClick"
+        @table-page-size-change="tablePageSizeChange"
+        @table-page-num-change="tablePageNumChange"
+      ></DaTreeTable>
     </div>
 
     <Modal v-model="showModel" class="modalStyle">
@@ -98,15 +95,23 @@
 
   export default {
     name: 'setting-common-func',
-    data () {
+    data() {
       return {
         functionsColumns: [
-          { title: '功能名称', slot: 'title' },
-          { title: '缩略图', slot: 'thumb' },
-          { title: '是否显示', slot: 'isShow' },
-          { title: '操作', slot: 'action' }
+          { title: '序号', type: 'index', width: 60, align: 'center' },
+          { title: '功能名称', minWidth: 60, key: 'title', tooltip: true },
+          { title: '缩略图', minWidth: 60, key: 'thumb', tooltip: true },
+          { title: '是否显示', minWidth: 60, key: 'isShow', tooltip: true },
+          { title: '操作', slot: 'action', minWidth: 150, align: 'center' },
         ],
+        queryParams: {
+          searchKey: '',
+          paging: true,
+          pageNum: 1,
+          pageSize: 10,
+        },
         functionsData: [],
+        functionsTotal: 0,
 
         showModel: false,
         functionAdd: false,
@@ -117,14 +122,34 @@
         functionObjName: '',
         functionObjTitle: '',
         functionObjImg: '',
-        functionObjIsShow: 0
+        functionObjIsShow: 0,
       };
     },
-    created () {
+    created() {
       this.getFunctionData();
     },
     methods: {
-      previewRow (row) {
+      tableSearch(searchKey) {
+        this.searchKey = searchKey;
+        this.getFunctionData();
+      },
+      tableToolClick(item, index) {
+        if (item.name === 'addRow') {
+        }
+      },
+      tableRowToolClick(item, toolI, row, index) {
+        if (item.name === 'readRow') {
+        } else if (item.name === 'upRow') {
+        } else if (item.name === 'delRow') {
+        }
+      },
+      tablePageSizeChange(pageSize) {
+        this.getFunctionData();
+      },
+      tablePageNumChange(pageNum) {
+        this.getFunctionData();
+      },
+      previewRow(row) {
         let rowObj = JSON.parse(JSON.stringify(row));
         this.functionObjId = rowObj.functionId;
         this.functionObjName = rowObj.functionName;
@@ -134,7 +159,7 @@
         this.showModelRead = true;
         this.showModel = true;
       },
-      updateRow (row) {
+      updateRow(row) {
         let rowObj = JSON.parse(JSON.stringify(row));
         this.functionObjId = rowObj.functionId;
         this.functionObjName = rowObj.functionName;
@@ -145,15 +170,15 @@
         this.showModel = true;
         console.log('updateRow', row);
       },
-      async deleteRow (row) {
+      async deleteRow(row) {
         let params = {
           functionId: this.functionObjId,
           functionName: this.functionObjName,
           functionTitle: this.functionObjTitle,
           functionImg: this.functionObjImg,
-          functionShow: this.functionObjIsShow
+          functionShow: this.functionObjIsShow,
         };
-        await this.$http.post('/shop/home/function/delete', params).then(
+        await this.$http('post', '/shop/home/function/delete', params).then(
           (res) => {
             this.getFunctionData();
           },
@@ -162,7 +187,7 @@
           }
         );
       },
-      showModalMethod () {
+      showModalMethod() {
         this.functionAdd = true;
         this.showModel = true;
 
@@ -172,7 +197,7 @@
         this.functionObjImg = '';
         this.functionObjIsShow = 1;
       },
-      async getFile (e) {
+      async getFile(e) {
         let _this = this;
         let files = e.target.files;
         let file = files[0];
@@ -189,11 +214,10 @@
 
         let params = new FormData(); // 创建form对象
         params.append('file', file); // 通过append向form对象添加数据
-        await this.$http
-          .post('/upload/img', params, {
-            headers: { 'Content-Type': 'multipart/form-data' }
-          })
-          .then(function (response) {
+        await this.$http('post', '/upload/img', params, {
+          headers: { 'Content-Type': 'multipart/form-data' },
+        })
+          .then(function(response) {
             console.log(response);
             const { data } = response;
             if (data.code === 0) {
@@ -205,21 +229,21 @@
             }
             e.target.value = '';
           })
-          .catch(function (error) {
+          .catch(function(error) {
             console.log(error);
             e.target.value = '';
           });
       },
-      async modalOk () {
+      async modalOk() {
         let params = {
           functionId: this.functionObjId,
           functionName: this.functionObjName,
           functionTitle: this.functionObjTitle,
           functionImg: this.functionObjImg,
-          functionShow: this.functionObjIsShow
+          functionShow: this.functionObjIsShow,
         };
         if (this.functionAdd) {
-          await this.$http.post('/shop/home/function/insert', params).then(
+          await this.$http('post', '/shop/home/function/insert', params).then(
             (res) => {
               this.showModel = false;
               this.functionAdd = false;
@@ -230,7 +254,7 @@
             }
           );
         } else if (!this.showModelRead) {
-          await this.$http.post('/shop/home/function/update', params).then(
+          await this.$http('post', '/shop/home/function/update', params).then(
             (res) => {
               this.getFunctionData();
               this.showModel = false;
@@ -243,10 +267,10 @@
           this.showModel = false;
         }
       },
-      modalCancel () {
+      modalCancel() {
         if (this.uploadImgId) {
           let params = { fileId: this.uploadImgId };
-          this.$http.post('/file/delete', params).then(
+          this.$http('post', '/file/delete', params).then(
             (res) => {
               this.showModel = false;
             },
@@ -258,71 +282,53 @@
           this.showModel = false;
         }
       },
-      async getFunctionData () {
-        await this.$http.post('/shop/home/function/query', {}).then(
-          (res) => {
-            const { data } = res;
-            if (data.code === 0) {
-              this.functionsData = data.data;
-            }
-            this.showModel = false;
-          },
-          (e) => {
-            console.log(e);
-          }
+      async getFunctionData() {
+        const ret = await this.$http(
+          'post',
+          '/shop/home/function/query',
+          JSON.stringify(this.queryParams)
         );
+        // const ret = await this.$http(
+        //   'post',
+        //   '/user/login',
+        //   JSON.stringify({ userName: 'admin', userPass: '123456' })
+        // );
+        console.log(ret);
+        const {
+          code,
+          msg,
+          data: { rows, total },
+        } = ret.data;
+        if (code === 0) {
+          this.functionsData = rows;
+          this.functionsTotal = total;
+        } else {
+          this.$message.error(msg);
+        }
+        // this.showModel = false;
       },
-      switchChanged (val) {
+      switchChanged(val) {
         if (val) {
           this.functionObjIsShow = 1;
         } else {
           this.functionObjIsShow = 0;
         }
-      }
+      },
     },
     components: {
-      DySwitch
-    }
+      DySwitch,
+    },
   };
 </script>
 
 <style lang="scss" scoped>
   .settingCommonFunc {
-    .toolbarStyle {
-      padding: 5px 10px;
+    height: 100%;
+    width: 100%;
+
+    .tableClass {
+      height: 100%;
       width: 100%;
-      .toolItem {
-        width: 60px;
-        text-align: center;
-        border: 1px solid $dy-primary-color;
-        color: $dy-primary-color;
-        border-radius: 5px;
-      }
-    }
-    .rowButtonContain {
-      display: flex;
-      .rowButton {
-        cursor: pointer;
-        border: 1px solid $dy-primary-color;
-        border-radius: 5px;
-        padding: 2px 8px;
-        font-size: 10px;
-        margin-right: 10px;
-        color: $dy-primary-color;
-      }
-      .rowButton:hover {
-        background: $dy-primary-color;
-        color: #ffffff;
-      }
-      .delBtn {
-        @extend .rowButton;
-        border: 1px solid #ff0000;
-        color: #ff0000;
-      }
-      .delBtn:hover {
-        background: #ff0000;
-        color: #ffffff;
-      }
     }
   }
 </style>

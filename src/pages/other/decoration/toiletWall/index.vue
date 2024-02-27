@@ -93,7 +93,7 @@
         left: 0;
         right: 0;
         height: 150px;
-        background-image: url('../../../assets/1.png');
+        background-image: url('../../../../assets/1.png');
         background-repeat: repeat;
         background-size: 100% 100%;
       }
@@ -102,7 +102,7 @@
         bottom: 230px;
         width: 150px;
         height: 300px;
-        background-image: url('../../../assets/1-1.png');
+        background-image: url('../../../../assets/1-1.png');
         background-repeat: repeat;
         background-size: 100% 100%;
       }
@@ -113,7 +113,7 @@
         right: 0;
         height: 80px;
         width: 160x;
-        background-image: url('../../../assets/2.png');
+        background-image: url('../../../../assets/2.png');
         // background-repeat: repeat-x;
         background-size: cover;
       }

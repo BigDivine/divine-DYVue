@@ -1,20 +1,22 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import IndexView from '@/pages/index';
-import HomeView from '@/pages/home';
-import HomeSettingView from '@/pages/home-setting';
-import ViewDocView from '@/pages/view-doc';
 
-import OneHouseView from '@/pages/decoration/oneHouse';
-import ThreeHouseView from '@/pages/decoration/threeHouse';
-import ToiletWallView from '@/pages/decoration/toiletWall';
-import KitchenView from '@/pages/decoration/kitchen/index';
+import IndexView from '@/pages/common/index';
 
-import DownloadView from '@/pages/downloadPage';
-import IframeView from '@/pages/iframe/iframe';
+import HomeView from '@/pages/dy/home';
+import HomeSettingView from '@/pages/dy/home-setting';
+import ViewDocView from '@/pages/dy/view-doc';
 
-import VxeTableView from '@/pages/vxeTable/index';
-import CFActivityView from '@/pages/cf-activity';
+import OneHouseView from '@/pages/other/decoration/oneHouse';
+import ThreeHouseView from '@/pages/other/decoration/threeHouse';
+import ToiletWallView from '@/pages/other/decoration/toiletWall';
+import KitchenView from '@/pages/other/decoration/kitchen/index';
+
+import DownloadView from '@/pages/other/downloadPage';
+import IframeView from '@/pages/other/iframe/iframe';
+
+import VxeTableView from '@/pages/other/vxeTable/index';
+import CFActivityView from '@/pages/other/cf-activity';
 
 Vue.use(Router);
 const routes = [

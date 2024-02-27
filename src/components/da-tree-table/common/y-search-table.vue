@@ -45,7 +45,7 @@
             <YToolItem
               v-for="(item, toolI) in rowTools"
               :key="toolI"
-              :color="row.enableActions.indexOf(item.name) === -1 ? '#cccccc' : item.color"
+              :color="row.hasOwnProperty('enableActions') ? (row.enableActions.indexOf(item.name) === -1 ? '#cccccc' : item.color) : item.color"
               :title="item.title"
               :divider="toolI !== rowTools.length - 1"
               @on-click="rowToolClick(item, toolI, row, index)">
@@ -149,7 +149,7 @@ export default {
       this.$emit('tool-click', item, index);
     },
     rowToolClick(item, toolI, row, index) {
-      if (row.enableActions.indexOf(item.name) === -1) return;
+      if (row.hasOwnProperty('enableActions') && row.enableActions.indexOf(item.name) === -1) return;
       this.$emit('row-tool-click', item, toolI, row, index);
     },
     onSelectChange(args, currentRow, rowIndex) {

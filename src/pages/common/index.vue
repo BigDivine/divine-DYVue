@@ -48,24 +48,6 @@
       });
     },
     methods: {
-      uploadFile(e) {
-        let files = e.target.files;
-        let file = files[0];
-        let param = new FormData(); // 创建form对象
-        param.append('file', file); // 通过append向form对象添加数据
-        this.$http
-          .post('/upload/img', param, {
-            headers: { 'Content-Type': 'multipart/form-data' },
-          })
-          .then(function(response) {
-            console.log(response);
-            e.target.value = '';
-          })
-          .catch(function(error) {
-            console.log(error);
-            e.target.value = '';
-          });
-      },
       menuItemClick(item) {
         this.$router.push({ path: `/${item.view}`, name: `${item.view}` });
       },
