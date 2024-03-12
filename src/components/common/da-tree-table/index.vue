@@ -336,7 +336,7 @@
     }
   };
 </script>
-<style lang="less" scoped>
+<style lang="scss" scoped>
   .DaTreeTable {
     height: 100%;
     width: 100%;
@@ -370,7 +370,7 @@
     }
     .splitStyle {
       border: 1px solid #eaeaea;
-      height: calc(~'100% - 60px');
+      height: calc(100% - 60px);
 
       .splitLeft {
         background: #ffffff;

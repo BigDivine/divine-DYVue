@@ -13,16 +13,41 @@
 <template>
   <div class="YSearchTree">
     <div v-if="mode !== 1 && !readOnly && showTool" class="YTreeTool">
-      <div :class="toolStyle === 2 ? 'BigYTreeToolItem' : toolStyle === 1 ? 'YTreeToolItem' : 'YTreeToolItem'" v-for="(item, index) in tools" :key="index">
-        <Button class="YTreeToolItemBtn" size="small" type="primary" ghost @click="toolClick(item, index)">
+      <div
+        :class="
+          toolStyle === 2 ? 'BigYTreeToolItem' : toolStyle === 1 ? 'YTreeToolItem' : 'YTreeToolItem'
+        "
+        v-for="(item, index) in tools"
+        :key="index"
+      >
+        <Button
+          class="YTreeToolItemBtn"
+          size="small"
+          type="primary"
+          ghost
+          @click="toolClick(item, index)"
+        >
           {{ item.title }}
         </Button>
       </div>
     </div>
-    <Input v-if="showSearch" size="small" suffix="ios-search" placeholder="输入关键字查询（按名称）" style="margin-bottom: 10px" v-model="searchKey" />
+    <Input
+      v-if="showSearch"
+      size="small"
+      suffix="ios-search"
+      placeholder="输入关键字查询（按名称）"
+      style="margin-bottom: 10px"
+      v-model="searchKey"
+    />
     <div class="YTreeContain">
       <div class="YTree">
-        <Tree :data="data" :load-data="loadData" :render="isCustomRender ? treeRender : renderContent" class="treeStyle" @on-select-change="selectChange"></Tree>
+        <Tree
+          :data="data"
+          :load-data="loadData"
+          :render="isCustomRender ? treeRender : renderContent"
+          class="treeStyle"
+          @on-select-change="selectChange"
+        ></Tree>
       </div>
     </div>
   </div>
@@ -44,16 +69,16 @@ export default {
     data: { type: Array, default: () => [] },
     readOnly: { type: Boolean, default: false }
   },
-  data () {
-    return { searchKey: '' }
+  data() {
+    return { searchKey: '' };
   },
   watch: {
-    searchKey (val) {
-      this.$emit('search', val)
+    searchKey(val) {
+      this.$emit('search', val);
     }
   },
   methods: {
-    renderContent (h, { root, node, data }) {
+    renderContent(h, { root, node, data }) {
       return h(
         'div',
         {
@@ -62,10 +87,10 @@ export default {
           },
           on: {
             mouseenter: () => {
-              if (this.mode !== 1 && !this.readOnly) this.mouseIn(data)
+              if (this.mode !== 1 && !this.readOnly) this.mouseIn(data);
             },
             mouseleave: () => {
-              if (this.mode !== 1 && !this.readOnly) this.mouseOut(data)
+              if (this.mode !== 1 && !this.readOnly) this.mouseOut(data);
             }
           }
         },
@@ -122,7 +147,7 @@ export default {
                     },
                     nativeOn: {
                       click: () => {
-                        this.editClick(data)
+                        this.editClick(data);
                       }
                     }
                   }),
@@ -137,7 +162,7 @@ export default {
                     },
                     nativeOn: {
                       click: () => {
-                        this.deleteClick(data)
+                        this.deleteClick(data);
                       }
                     }
                   })
@@ -146,39 +171,39 @@ export default {
             ]
           )
         ]
-      )
+      );
     },
 
-    mouseIn (data) {
-      let id = data.id || data.code || data.name
-      let elId = 'operation' + id
-      let el = document.getElementById(elId)
-      el.style.display = 'block'
+    mouseIn(data) {
+      let id = data.id || data.code || data.name;
+      let elId = 'operation' + id;
+      let el = document.getElementById(elId);
+      el.style.display = 'block';
     },
-    mouseOut (data) {
-      let id = data.id || data.code || data.name
-      let elId = 'operation' + id
-      let el = document.getElementById(elId)
-      el.style.display = 'none'
+    mouseOut(data) {
+      let id = data.id || data.code || data.name;
+      let elId = 'operation' + id;
+      let el = document.getElementById(elId);
+      el.style.display = 'none';
     },
 
-    toolClick (item, index) {
-      this.$emit('tool-click', item, index)
+    toolClick(item, index) {
+      this.$emit('tool-click', item, index);
     },
-    selectChange (selectNodes, curNode) {
-      this.$emit('tree-select', selectNodes, curNode)
+    selectChange(selectNodes, curNode) {
+      this.$emit('tree-select', selectNodes, curNode);
     },
-    editClick (data) {
-      this.$emit('node-edit', data)
+    editClick(data) {
+      this.$emit('node-edit', data);
     },
-    deleteClick (data) {
-      this.$emit('node-delete', data)
+    deleteClick(data) {
+      this.$emit('node-delete', data);
     }
   }
-}
+};
 </script>
 
-<style lang="less" scope>
+<style lang="scss" scope>
 .YSearchTree {
   height: 100%;
   width: 100%;
@@ -209,7 +234,7 @@ export default {
       .treeStyle {
         .ivu-tree-title {
           //将节点title横向铺满并且防止出现多余横向滚动条
-          width: calc(~'100% - 20px');
+          width: calc(100% - 20px);
         }
         li {
           margin: 3px 0 0 0;

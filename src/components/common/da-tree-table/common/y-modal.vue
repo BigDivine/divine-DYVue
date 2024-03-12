@@ -71,7 +71,7 @@ export default {
   }
 }
 </script>
-<style lang="less" scoped>
+<style lang="scss" scoped>
   .YModal {
     .modalHeader {
       display: flex;

@@ -8,197 +8,68 @@
 ********************************************************************-->
 <template>
   <div class="Index">
-    <Form ref="userForm" :model="userInfo" :rules="loginRule" class="formStyle">
-      <FormItem>
-        <Row>
-          <Col span="24">
-            <div
-              style="display:flex;justify-content:center;align-items:center;color:white;font-size:20px;font-weight:600;"
-            >
-              <img style="height:30px;width:30px;margin-right:10px;" src="/static/logo.png" /><span
-                >用户登录</span
-              >
-            </div>
-          </Col>
-        </Row>
-      </FormItem>
-      <FormItem prop="userName">
-        <Row>
-          <Col span="24">
-            <Input
-              type="text"
-              prefix="ios-contact"
-              v-model="userInfo.userName"
-              placeholder="请输入用户名"
-            />
-          </Col>
-        </Row>
-      </FormItem>
-      <FormItem prop="userPass">
-        <Row>
-          <Col span="24">
-            <Input
-              type="password"
-              prefix="ios-lock"
-              password
-              v-model="userInfo.userPass"
-              placeholder="请输入密码"
-            />
-          </Col>
-        </Row>
-      </FormItem>
-      <!-- <FormItem prop="userPass">
-        <Row>
-          <Col span="24">
-            <Input
-              type="number"
-              prefix="ios-call"
-              v-model="userInfo.userPhone"
-              placeholder="请输入手机号"
-            />
-          </Col>
-        </Row>
-      </FormItem> -->
-      <FormItem>
-        <Row>
-          <Col span="24"> <Button long ghost @click="loginIn">登录</Button> </Col>
-        </Row>
-      </FormItem>
-      <FormItem>
-        <Row>
-          <Col span="24"> <Button long ghost @click="adminLoginIn">admin登录</Button> </Col>
-        </Row>
-      </FormItem>
-      <FormItem
-        style="text-align: right;color:#ffffff"
-        v-model="saveUserInfo"
-        @on-change="handleCheckboxChange"
-      >
-        <Row>
-          <Col span="24"> <Checkbox>记住我的登录</Checkbox> </Col>
-        </Row>
-      </FormItem>
-      <FormItem style="text-align: center;color:#ffffff">
-        <Row>
-          <Col span="24"> <div>D--------------Y</div> </Col>
-        </Row>
-      </FormItem>
-    </Form>
+    <div class="contain">
+      <transition name="login" @after-leave="afterLeave">
+        <DyLogin
+          v-if="type === 'login'"
+          class="formStyle"
+          @phone="phone"
+          @reset="reset"
+          @register="register"
+        >
+        </DyLogin>
+      </transition>
+      <transition name="register" @after-leave="afterLeave">
+        <DyRegister v-if="type === 'register'" class="formStyle" @back="backToLogin"> </DyRegister>
+      </transition>
+    </div>
   </div>
 </template>
 
 <script>
-import { LoginApi } from '@/api';
+import LoginComponents from '@/components/login/index.js';
+
 export default {
   name: 'Index',
-  components: {},
+  components: LoginComponents,
   data() {
     return {
-      userInfo: {
-        userName: '',
-        userPass: ''
-      },
-      loginRule: {
-        userName: [{ required: true, message: '请输入用户名', trigger: 'blur' }],
-        userPass: [{ required: true, message: '请输入登录密码', trigger: 'blur' }]
-      },
-      saveUserInfo: false
+      //login:登录;register:注册;reset:重置;phone:手机号登录
+      type: 'register',
+      tempType: 'register'
     };
   },
   created() {},
-  mounted() {
-    if (localStorage.getItem('userName')) {
-      this.userInfo.userName = localStorage.getItem('userName');
-    }
-    if (localStorage.getItem('userPass')) {
-      this.userInfo.userPass = localStorage.getItem('userPass');
-    }
-    // this.userInfo.userPass = '';
-    // if (localStorage.getItem('userTenant')) {
-    //   this.userInfo.userTenant = localStorage.getItem('userTenant');
-    // }
-  },
-
+  mounted() {},
   methods: {
-    // 是否记录用户名密码
-    handleCheckboxChange(value) {
-      sessionStorage.rememberMe = value;
+    phone() {
+      console.log('手机号登录');
+      this.type = '';
+      this.tempType = 'phone';
     },
-    async adminLoginIn() {
-      let params = {
-        userName: 'admin',
-        userPass: 'admin'
-      };
-      let res = await this.$http('post', LoginApi.login, JSON.stringify(params));
-      const { data, code, msg } = res.data;
-      if (code === 0) {
-        sessionStorage.token = data.token;
-        this.$router.push({ path: '/dy' });
-      } else {
-        this.$message.error(msg);
-      }
+    reset() {
+      console.log('重设密码');
+      this.type = '';
+      this.tempType = 'reset';
     },
-    loginIn() {
-      // let params = {
-      //   username: this.userInfo.userName,
-      //   pwd: this.userInfo.userPass,
-      // };
-      this.$refs.userForm.validate((valid) => {
-        if (valid) {
-          // HttpLogin.loginIn(
-          //   this,
-          //   params,
-          //   (res) => {
-          //     const { code, msg, token, username } = res;
-          //     if (code === 0) {
-          //       sessionStorage.token = token;
-          //       sessionStorage.username = username;
-          //       sessionStorage.token = res.token;
-          //       localStorage.setItem('userName', this.userInfo.userName);
-          //       localStorage.setItem('userPass', this.userInfo.userPass);
-          //       this.$router.push({
-          //         path: '/bi/manage',
-          //         name: 'manage',
-          //       });
-          //     } else {
-          //       console.log('request error:' + msg);
-          //     }
-          //   },
-          //   (e) => {
-          //     console.log('request error:' + e);
-          //   }
-          // );
-        }
-      });
+    register() {
+      console.log('注册');
+      this.type = '';
+      this.tempType = 'register';
     },
-    toPreview() {
-      this.$router.push({
-        path: '/bi/execute',
-        name: 'execute',
-        query: {
-          config: {
-            reportId: '0048cf44-2365-4dfc-91b1-9beb32411812' // '905595cb-a027-47ea-ac41-c1080ea37dbe'// '0048cf44-2365-4dfc-91b1-9beb32411812'// '27bae9ba-ec47-4521-a456-d7deefb2baf4'// 'c9dbce9a-ad10-4aff-a286-e64d30250e0b'
-          }
-        }
-      });
+    backToLogin() {
+      console.log('注册完成');
+      this.type = '';
+      this.tempType = 'login';
+    },
+    afterLeave() {
+      console.log('afterLeave');
+      this.type = this.tempType;
     }
   }
 };
 </script>
-<style lang="less" scoped>
-@keyframes bglinear {
-  0% {
-    background-position: 0 100%;
-  }
-
-  50% {
-    background-position: 100% 100%;
-  }
-
-  100% {
-    background-position: 0 100%;
-  }
-}
+<style lang="scss" scoped>
 .Index {
   width: 100%;
   height: 100%;
@@ -206,24 +77,34 @@ export default {
   align-items: center;
   justify-content: center;
   background: linear-gradient(45deg, #c850c0, #4158d0);
-
   background-size: 200% 100%;
   animation: bglinear 10s ease infinite;
-
-  .loginTitle {
-    text-align: center;
-    font-size: 24px;
-    color: #ffffff;
-    font-weight: 600;
-  }
-  .formStyle {
-    width: 400px;
-    padding: 20px 50px;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  .contain {
     animation: blink 5s infinite alternate;
+    border-radius: 10px;
+    .formStyle {
+      width: 400px;
+      padding: 20px 50px;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+  }
+  @keyframes bglinear {
+    0% {
+      background-position: 0 100%;
+    }
+
+    50% {
+      background-position: 100% 100%;
+    }
+
+    100% {
+      background-position: 0 100%;
+    }
   }
 
   @keyframes blink {
@@ -232,6 +113,34 @@ export default {
     }
     100% {
       box-shadow: 0 0px 15px #ffffff;
+    }
+  }
+  .register-enter-active,
+  .login-enter-active {
+    animation: view-enter 0.5s ease 1;
+  }
+  .register-leave-active,
+  .login-leave-active {
+    animation: view-leave 0.5s ease 1;
+  }
+  @keyframes view-enter {
+    0% {
+      width: 0;
+      padding: 20px 0;
+    }
+    100% {
+      width: 400px;
+      padding: 20px 50px;
+    }
+  }
+  @keyframes view-leave {
+    0% {
+      width: 400px;
+      padding: 20px 50px;
+    }
+    100% {
+      width: 0;
+      padding: 20px 0;
     }
   }
 }

@@ -66,7 +66,7 @@
     }
   };
 </script>
-<style lang="less" scoped>
+<style lang="scss" scoped>
   .iframe {
     height: 100%;
     width: 100%;

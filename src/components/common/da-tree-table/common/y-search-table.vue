@@ -205,7 +205,7 @@ export default {
 };
 </script>
 
-<style lang="less" scope>
+<style lang="scss" scope>
 .YSearchTable {
   height: 100%;
   width: 100%;
