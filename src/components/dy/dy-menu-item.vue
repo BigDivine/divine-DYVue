@@ -10,7 +10,7 @@
       class="DYMenuSubContain"
       :style="{
         width: menuWidth + 'px',
-        borderBottomRightRadius: showSubChild ? '0' : '8px',
+        borderBottomRightRadius: showSubChild ? '0' : '8px'
       }"
       v-if="showSub"
     >
@@ -26,7 +26,7 @@
       :style="{
         top: (curSubMenuIndex > -1 ? (curSubMenuIndex + 1) * 40 : 0) + 'px',
         left: menuWidth + 'px',
-        width: menuWidth + 'px',
+        width: menuWidth + 'px'
       }"
       v-if="showSubChild"
     >
@@ -47,8 +47,8 @@
       menu: { type: Object, default: () => {} },
       expand: {
         type: Boolean,
-        default: false,
-      },
+        default: false
+      }
     },
 
     data() {
@@ -58,7 +58,7 @@
         showSub: false,
         curSubMenu: null,
         curSubMenuIndex: -1,
-        showSubChild: false,
+        showSubChild: false
       };
     },
     watch: {
@@ -70,7 +70,7 @@
           this.curSubMenu = null;
           this.curSubMenuIndex = -1;
         }
-      },
+      }
     },
     mounted() {
       let menuItemDom = this.$refs.DYMenuItem;
@@ -99,10 +99,9 @@
         }
         if (level === 3) {
           this.$emit('item-click', item);
-          return;
         }
-      },
-    },
+      }
+    }
   };
 </script>
 

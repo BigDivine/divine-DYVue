@@ -20,7 +20,14 @@
           </Button>
         </div>
       </div>
-      <Input v-if="showSearch" size="small" suffix="ios-search" placeholder="输入关键字查询（按名称）" class="YSearchTableSearch" v-model="searchKey" />
+      <Input
+        v-if="showSearch"
+        size="small"
+        suffix="ios-search"
+        placeholder="输入关键字查询（按名称）"
+        class="YSearchTableSearch"
+        v-model="searchKey"
+      />
     </div>
 
     <div ref="DaTreeTableTableDom" class="YSearchTableTable">
@@ -36,19 +43,31 @@
         @on-select-all="onSelectAll"
         @on-selection-change="onSelectionChange"
         @on-select-cancel="onSelectCancel"
-        @on-select-all-cancel="onSelectAllCancel">
+        @on-select-all-cancel="onSelectAllCancel"
+      >
         <template slot-scope="{ row, index }" slot="checkbox">
-          <Checkbox :value="row.selected" :disabled="row._disabled" @on-change="onSelectChange(arguments, row, index)"></Checkbox>
+          <Checkbox
+            :value="row.selected"
+            :disabled="row._disabled"
+            @on-change="onSelectChange(arguments, row, index)"
+          ></Checkbox>
         </template>
         <template slot-scope="{ row, index }" slot="action">
           <div class="tableRowAction">
             <YToolItem
               v-for="(item, toolI) in rowTools"
               :key="toolI"
-              :color="row.hasOwnProperty('enableActions') ? (row.enableActions.indexOf(item.name) === -1 ? '#cccccc' : item.color) : item.color"
+              :color="
+                row.hasOwnProperty('enableActions')
+                  ? row.enableActions.indexOf(item.name) === -1
+                    ? '#cccccc'
+                    : item.color
+                  : item.color
+              "
               :title="item.title"
               :divider="toolI !== rowTools.length - 1"
-              @on-click="rowToolClick(item, toolI, row, index)">
+              @on-click="rowToolClick(item, toolI, row, index)"
+            >
             </YToolItem>
           </div>
         </template>
@@ -65,7 +84,8 @@
         :page-size="pageSize"
         :page-size-opts="[20, 50, 100]"
         @on-change="pageNumChange"
-        @on-page-size-change="pageSizeChange" />
+        @on-page-size-change="pageSizeChange"
+      />
     </div>
   </div>
 </template>
@@ -94,12 +114,12 @@ export default {
     pageNum: { type: Number, default: 1 },
     pageSize: { type: Number, default: 20 },
     multiple: { type: Boolean, default: false },
-    isSelect: { type: Boolean, default: false },
+    isSelect: { type: Boolean, default: false }
   },
   data() {
     return {
       searchKey: '',
-      tableHeight: 0,
+      tableHeight: 0
     };
   },
   watch: {
@@ -108,7 +128,7 @@ export default {
     },
     data(val) {
       this.resetTableHeight();
-    },
+    }
   },
   mounted() {
     window.addEventListener('resize', this.resetTableHeight);
@@ -121,17 +141,9 @@ export default {
       if (this.isSelect) {
         return [
           this.multiple
-            ? {
-                type: 'selection',
-                width: 60,
-                align: 'center',
-              }
-            : {
-                width: 60,
-                align: 'center',
-                slot: 'checkbox',
-              },
-          ...this.columns,
+            ? { type: 'selection', width: 60, align: 'center' }
+            : { width: 60, align: 'center', slot: 'checkbox' },
+          ...this.columns
         ];
       } else {
         return [...this.columns];
@@ -149,7 +161,9 @@ export default {
       this.$emit('tool-click', item, index);
     },
     rowToolClick(item, toolI, row, index) {
-      if (row.hasOwnProperty('enableActions') && row.enableActions.indexOf(item.name) === -1) return;
+      if (row.hasOwnProperty('enableActions') && row.enableActions.indexOf(item.name) === -1) {
+        return;
+      }
       this.$emit('row-tool-click', item, toolI, row, index);
     },
     onSelectChange(args, currentRow, rowIndex) {
@@ -186,8 +200,8 @@ export default {
     },
     rowClassName(row, index) {
       return 'tableRowClass';
-    },
-  },
+    }
+  }
 };
 </script>
 

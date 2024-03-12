@@ -8,17 +8,22 @@ import '@/assets/theme/view-design-theme.less';
 import '@/assets/theme/vxe-table-theme.scss';
 
 import router from './router';
-import {request} from './api/axiosPlugin';
+import { request } from './api/axiosPlugin';
 
 import App from './App';
-import DaTreeTable from '@/components/da-tree-table'
+import CommonComponents from '@/components/common/index.js';
 
 Vue.use(VXETable);
 Vue.use(ViewUI);
-Vue.component("DaTreeTable", DaTreeTable)
+
+const componentKeys = Object.keys(CommonComponents);
+componentKeys.forEach((key) => {
+  Vue.component(key, CommonComponents[key]);
+});
+
 Vue.config.productionTip = false;
 
-Vue.prototype.$http=request
+Vue.prototype.$http = request;
 
 // eslint-disable-next-line no-new
 new Vue({

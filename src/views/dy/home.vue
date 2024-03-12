@@ -30,40 +30,38 @@
 </template>
 
 <script>
-  import DyClock from '@/components/dy-clock';
-  import DyHi from '@/components/dy-hi';
-  import DyLottery from '@/components/dy-lottery';
+import HomeComponents from '@/components/dy/home/index.js';
 
-  export default {
-    name: 'Home',
-    components: { DyClock, DyHi, DyLottery },
-    data() {
-      return {};
-    },
-    created() {},
-    mounted() {},
-    methods: {},
-  };
+export default {
+  name: 'Home',
+  components: HomeComponents,
+  data() {
+    return {};
+  },
+  created() {},
+  mounted() {},
+  methods: {}
+};
 </script>
 <style lang="scss" scoped>
-  .Home {
-    height: 100%;
-    width: 100%;
+.Home {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  border-top: 1px solid $dy-border-color;
+  border-bottom: 1px solid $dy-border-color;
+  .HomeGroup {
     display: flex;
-    border-top: 1px solid $dy-border-color;
-    border-bottom: 1px solid $dy-border-color;
-    .HomeGroup {
-      display: flex;
+    flex: 1;
+    flex-direction: column;
+    .HomeCell {
       flex: 1;
-      flex-direction: column;
-      .HomeCell {
-        flex: 1;
-        overflow: hidden;
-        .HomeCellContain {
-          height: 100%;
-          width: 100%;
-        }
+      overflow: hidden;
+      .HomeCellContain {
+        height: 100%;
+        width: 100%;
       }
     }
   }
+}
 </style>

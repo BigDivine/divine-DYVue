@@ -52,10 +52,12 @@ export function request(method, url, params) {
   return new Promise((resolve) => {
     promise.then(
       (res) => {
+        console.log('apiUtils-res', url);
         console.log('apiUtils-res', res);
         resolve(res);
       },
       (error) => {
+        console.log('apiUtils-error', url);
         console.log('apiUtils-error', error);
         resolve(error.response);
       }

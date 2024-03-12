@@ -1,0 +1,16 @@
+[
+  {
+    "name": "Home",
+    "icon": "logo",
+    "title": "首页",
+    "view": "Home",
+    "children": []
+  },
+  {
+    "name": "HomeSetting",
+    "icon": "logo",
+    "title": "首页配置",
+    "view": "HomeSetting",
+    "children": []
+  }
+]

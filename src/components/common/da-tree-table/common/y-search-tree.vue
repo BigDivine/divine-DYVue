@@ -40,7 +40,7 @@ export default {
     toolStyle: { type: Number, default: 2 },
     isCustomRender: { type: Boolean, default: false },
     treeRender: { type: Function, default: (h, { root, node, data }) => h() },
-    loadData: { type: Function, default: (item, callback) => f() },
+    // loadData: { type: Function, default: (item, callback) => f() },
     data: { type: Array, default: () => [] },
     readOnly: { type: Boolean, default: false }
   },

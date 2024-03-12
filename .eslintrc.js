@@ -4,16 +4,16 @@ module.exports = {
   root: true,
   parser: 'babel-eslint',
   parserOptions: {
-    sourceType: 'module',
+    sourceType: 'module'
   },
   env: {
-    browser: true,
+    browser: true
   },
   globals: {
     vue: true,
     wx: true,
     validate: true,
-    toolCodeArr: true,
+    toolCodeArr: true
     // onMenuShareAppMessage: true,
     // onMenuShareTimeline: true
   },
@@ -23,22 +23,23 @@ module.exports = {
   plugins: ['html'],
   // add your custom rules here
   rules: {
-    //0，不启用这个规则   1，出现问题会有警告   2，出现问题会报错
-    'no-console': 0,
-    'no-useless-escape': 0,
-    semi: 0, // 行尾使用分号
-    'no-multiple-empty-lines': [2, { max: 1 }], //空行最多不能超过两行
-    'comma-dangle': 2, //是否允许对象中出现结尾逗号
-    'use-isnan': 2, //要求检查NaN的时候使用isNaN()
-    'no-redeclare': 2, //不允许变量重复声明
-    'no-label-var': 2, //不允许标签和变量同名
-    'no-var': 1, //禁用var，用let和const代替
-    quotes: [2, 'single'], //引号类型 `` "" ''
-    'no-dupe-keys': 2, //对象中不允许出现重复的键
-    'no-unused-vars': [1, { args: 'none' }], //消除未使用的变量  不检查函数的参数
-    'fun-call-spacing': 0, //函数调用时，函数名与()之间有空格
-    'no-spaced-func': 0, //函数调用时 函数名与()之间不能有空格
-    'space-before-function-paren': [2, 'always'], //函数定义时括号前面要不要有空格
+    //0|'off'，不启用这个规则   1|'warn'，出现问题会有警告   2|'error'，出现问题会报错
+    semi: 'off', // 行尾使用分号
+    quotes: ['error', 'single'], //引号类型 `` "" ''
+    'comma-dangle': 'error', //是否允许对象中出现结尾逗号
+    'use-isnan': 'error', //要求检查NaN的时候使用isNaN()
+    'no-console': 'off',
+    'no-useless-escape': 'off',
+    'no-multiple-empty-lines': ['error', { max: 1 }], //空行最多不能超过两行
+    'no-redeclare': 'error', //不允许变量重复声明
+    'no-label-var': 'error', //不允许标签和变量同名
+    'no-var': 'warn', //禁用var，用let和const代替
+    'no-dupe-keys': 'error', //对象中不允许出现重复的键
+    'no-unused-vars': ['error', { args: 'none' }], //消除未使用的变量  不检查函数的参数
+    'no-spaced-func': 'off', //函数调用时 函数名与()之间不能有空格
+    'fun-call-spacing': 'off', //函数调用时，函数名与()之间有空格
+    'space-before-function-paren': 'off', //函数定义时括号前面要不要有空格
+    'spaced-comment': 'off' //Expected space or tab after '//' in comment
 
     // "indent": ["error", 2, { "SwitchCase": 1 }],
     // "no-cond-assign": 2, //条件语句的条件中不允许出现赋值运算符
@@ -60,5 +61,5 @@ module.exports = {
     // "prefer-promise-reject-errors": 0,
     // "no-dupe-args": 2,//函数参数不能重复
     // "no-irregular-whitespace": 2,//不能有不规则的空格
-  },
+  }
 };

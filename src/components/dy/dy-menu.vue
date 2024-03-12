@@ -22,47 +22,47 @@
 </template>
 
 <script>
-  import DYMenuItem from './dy-menu-item';
-  export default {
-    name: 'DyMenu',
-    components: { DYMenuItem },
-    props: {
-      navList: {
-        type: Array,
-        default: () => [],
-      },
-
-      mulExpand: {
-        type: Boolean,
-        default: false,
-      },
-    },
-    data() {
-      return {
-        expandIndex: 0,
-      };
+import DYMenuItem from './dy-menu-item';
+export default {
+  name: 'DyMenu',
+  components: { DYMenuItem },
+  props: {
+    navList: {
+      type: Array,
+      default: () => []
     },
 
-    methods: {
-      navClick(item, index) {
-        if (this.expandIndex === index) {
-          this.expandIndex = -1;
-          return;
-        }
-        this.expandIndex = index;
-      },
-      menuItemClick(menu) {
-        this.$emit('item-click', menu);
+    mulExpand: {
+      type: Boolean,
+      default: false
+    }
+  },
+  data() {
+    return {
+      expandIndex: 0
+    };
+  },
+
+  methods: {
+    navClick(item, index) {
+      if (this.expandIndex === index) {
         this.expandIndex = -1;
-      },
+        return;
+      }
+      this.expandIndex = index;
     },
-  };
+    menuItemClick(menu) {
+      this.$emit('item-click', menu);
+      this.expandIndex = -1;
+    }
+  }
+};
 </script>
 <style lang="scss" scoped>
-  .DyMenu {
-    width: 100%;
-    height: 40px;
-    line-height: 40px;
-    background: linear-gradient(to right, $dy-primary-color, $dy-bg-color);
-  }
+.DyMenu {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  background: linear-gradient(to right, $dy-primary-color, $dy-bg-color);
+}
 </style>

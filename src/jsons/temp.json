@@ -1,27 +1,27 @@
-[
+
   {
     "name": "WorkDemo",
-    "icon": "logo-dy",
+    "icon": "logo",
     "title": "工作（DEMO）",
     "view": "WorkDemo",
     "children": [
       {
         "name": "VxeTable",
-        "icon": "logo-dy",
+        "icon": "logo",
         "title": "VxeTable",
         "view": "VxeTable",
         "children": []
       },
       {
         "name": "ViewDoc",
-        "icon": "logo-dy",
+        "icon": "logo",
         "title": "组件说明",
         "view": "ViewDoc",
         "children": []
       },
       {
         "name": "Download",
-        "icon": "logo-dy",
+        "icon": "logo",
         "title": "下载页",
         "view": "Download",
         "children": []
@@ -30,40 +30,40 @@
   },
   {
     "name": "LifeDemo",
-    "icon": "logo-dy",
+    "icon": "logo",
     "title": "生活（DEMO）",
     "view": "LifeDemo",
     "children": [
       {
         "name": "Decoration",
-        "icon": "logo-dy",
+        "icon": "logo",
         "title": "装修",
         "view": "Decoration",
         "children": [
           {
             "name": "OneHouse",
-            "icon": "logo-dy",
+            "icon": "logo",
             "title": "一居室布局",
             "view": "OneHouse",
             "children": []
           },
           {
             "name": "ThreeHouse",
-            "icon": "logo-dy",
+            "icon": "logo",
             "title": "三居室布局",
             "view": "ThreeHouse",
             "children": []
           },
           {
             "name": "ToiletWall",
-            "icon": "logo-dy",
+            "icon": "logo",
             "title": "卫生间墙",
             "view": "ToiletWall",
             "children": []
           },
           {
             "name": "Kitchen",
-            "icon": "logo-dy",
+            "icon": "logo",
             "title": "厨房",
             "view": "Kitchen",
             "children": []
@@ -72,24 +72,9 @@
       },
       {
         "name": "CFActivity",
-        "icon": "logo-dy",
+        "icon": "logo",
         "title": "CF抽奖",
         "view": "CFActivity"
       }
     ]
   },
-  {
-    "name": "Home",
-    "icon": "logo-dy",
-    "title": "首页",
-    "view": "Home",
-    "children": []
-  },
-  {
-    "name": "HomeSetting",
-    "icon": "logo-dy",
-    "title": "首页配置",
-    "view": "HomeSetting",
-    "children": []
-  }
-]

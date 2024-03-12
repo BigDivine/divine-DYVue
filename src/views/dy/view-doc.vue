@@ -33,20 +33,20 @@
           title: '序号',
           type: 'index',
           width: 60,
-          align: 'center',
+          align: 'center'
         },
         {
           title: '标识',
           minWidth: 60,
           key: 'code',
-          tooltip: true,
+          tooltip: true
         },
         {
           title: '操作',
           slot: 'action',
           minWidth: 150,
-          align: 'center',
-        },
+          align: 'center'
+        }
       ]"
       :tableData="[{ code: 'a34234' }]"
       :tableTotal="299"
@@ -62,21 +62,20 @@
 </template>
 
 <script>
-  import DaTreeTable from '@/components/da-tree-table/index.vue';
-  export default {
-    name: 'ViewDoc',
-    components: { DaTreeTable },
-    data() {
-      return {};
-    },
-    created() {},
-    mounted() {},
-    methods: {},
-  };
+export default {
+  name: 'ViewDoc',
+  components: {},
+  data() {
+    return {};
+  },
+  created() {},
+  mounted() {},
+  methods: {}
+};
 </script>
 <style lang="scss" scoped>
-  .ViewDoc {
-    height: 100%;
-    width: 100%;
-  }
+.ViewDoc {
+  height: 100%;
+  width: 100%;
+}
 </style>
