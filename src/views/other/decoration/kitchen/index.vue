@@ -15,7 +15,7 @@
 </template>
 
 <script>
-  import DyListGroup from '@/components/dy-list-group.vue';
+  import DyListGroup from '@/components/common/dy-list-group.vue';
   import LeftLayout from './left-layout.vue';
   import CenterLayout from './center-layout.vue';
   import RightLayout from './right-layout.vue';

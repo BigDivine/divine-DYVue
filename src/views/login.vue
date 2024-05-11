@@ -22,6 +22,9 @@
       <transition name="register" @after-leave="afterLeave">
         <DyRegister v-if="type === 'register'" class="formStyle" @back="backToLogin"> </DyRegister>
       </transition>
+        <transition name="phone" @after-leave="afterLeave">
+        <DyRegister v-if="type === 'phone'" class="formStyle" @back="backToLogin"> </DyRegister>
+      </transition>
     </div>
   </div>
 </template>
@@ -35,8 +38,8 @@ export default {
   data() {
     return {
       //login:登录;register:注册;reset:重置;phone:手机号登录
-      type: 'register',
-      tempType: 'register'
+      type: 'login',
+      tempType: 'login'
     };
   },
   created() {},

@@ -46,15 +46,29 @@
               placeholder="请输入确认密码"
             />
           </Col>
-        </Row> </FormItem
-      ><FormItem prop="userPass">
+        </Row>
+      </FormItem>
+
+      <FormItem prop="userPhone">
         <Row>
-          <Col span="15">
+          <Col span="24">
             <Input
               type="tel"
               prefix="ios-call"
               v-model="userInfo.userPhone"
               placeholder="请输入手机号"
+            />
+          </Col>
+        </Row>
+      </FormItem>
+      <FormItem prop="userPhoneVer">
+        <Row>
+          <Col span="15">
+            <Input
+              type="tel"
+              prefix="ios-send"
+              v-model="userInfo.userPhoneVer"
+              placeholder="请输入验证码"
             />
           </Col>
           <Col span="8" push="1">
@@ -71,6 +85,7 @@
 </template>
 
 <script>
+import { LoginApi } from '@/api';
 export default {
   name: 'DyRegister',
   components: {},
@@ -79,29 +94,58 @@ export default {
       userInfo: {
         userName: '',
         userPass: '',
-        userPass2: ''
+        userPass2: '',
+        userPhone: '',
+        userPhoneVer: ''
       },
       loginRule: {
         userName: [{ required: true, message: '请输入用户名', trigger: 'blur' }],
         userPass: [{ required: true, message: '请输入密码', trigger: 'blur' }],
         userPass2: [{ required: true, message: '请输入确认密码', trigger: 'blur' }],
-        userPhone: [{ required: true, message: '请输入手机号', trigger: 'blur' }]
+        userPhone: [{ required: true, message: '请输入手机号', trigger: 'blur' }],
+        userPhoneVer: [{ required: true, message: '请输入手机验证码', trigger: 'blur' }]
       }
     };
   },
   created() {},
   mounted() {},
   methods: {
-    getVer() {},
+    async getVer() {
+      const {
+        data: { res, code, msg }
+      } = await this.$http(
+        'post',
+        LoginApi.getVerify,
+        JSON.stringify({
+          userPhone: this.userInfo.userPhone
+        })
+      );
+      if (code === 0) {
+        this.userInfo.userPhoneVer = res.sms_verify;
+      } else {
+        this.$Message.error(msg);
+      }
+    },
     register() {
       this.$refs.userForm.validate(async (valid) => {
         if (valid) {
-          // let params = {
-          //   userName: this.userInfo.userName,
-          //   userPass: this.userInfo.userPass
-          // };
-          // this.loginRequest(params);
-          this.cancel();
+          if (this.userInfo.userPass === this.userInfo.userPass2) {
+            let params = {
+              userName: this.userInfo.userName,
+              userPass: this.userInfo.userPass,
+              userPhone: this.userInfo.userPhone,
+              userPhoneVer: this.userInfo.userPhoneVer
+            };
+            const {
+              data: { code, msg }
+            } = await this.$http('post', LoginApi.register, JSON.stringify(params));
+            if (code === 0) {
+              this.$Message.success('注册成功');
+              this.cancel();
+            } else {
+              this.$Message.error(msg);
+            }
+          }
         }
       });
     },

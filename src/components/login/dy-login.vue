@@ -37,8 +37,8 @@
       </FormItem>
     </Form>
     <div class="downInput">
-      <div class="phoneLogin"  @click="phone()">手机验证码登录</div>
-      <div class="missPass"  @click="reset()">忘记密码？</div>
+      <div class="phoneLogin" @click="phone()">手机验证码登录</div>
+      <div class="missPass" @click="reset()">忘记密码？</div>
     </div>
     <Button long ghost @click="loginIn()">登录</Button>
     <div class="register" @click="register()">立即注册</div>
@@ -120,10 +120,11 @@ export default {
       });
     },
     async loginRequest(params) {
-      let res = await this.$http('post', LoginApi.login, JSON.stringify(params));
-      const { data, code, msg } = res.data;
+      const {
+        data: { res, code, msg }
+      } = await this.$http('post', LoginApi.login, JSON.stringify(params));
       if (code === 0) {
-        sessionStorage.token = data.token;
+        sessionStorage.token = res.token;
         this.$router.push({ path: '/dy' });
       } else {
         this.$message.error(msg);

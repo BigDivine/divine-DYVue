@@ -8,16 +8,18 @@ import HomeView from '@/views/dy/home.vue';
 import HomeSettingView from '@/views/dy/home-setting';
 import ViewDocView from '@/views/dy/view-doc';
 
-// import OneHouseView from '@/pages/other/decoration/oneHouse';
-// import ThreeHouseView from '@/pages/other/decoration/threeHouse';
-// import ToiletWallView from '@/pages/other/decoration/toiletWall';
-// import KitchenView from '@/pages/other/decoration/kitchen/index';
+import OneHouseView from '@/views/other/decoration/oneHouse';
+import ThreeHouseView from '@/views/other/decoration/threeHouse';
+import ToiletWallView from '@/views/other/decoration/toiletWall';
+import KitchenView from '@/views/other/decoration/kitchen/index';
+import BoxView from '@/views/other/decoration/box/index';
 
-// import DownloadView from '@/pages/other/downloadPage';
-// import IframeView from '@/pages/other/iframe/iframe';
+import CFActivityView from '@/views/other/cf-activity';
 
-// import VxeTableView from '@/pages/other/vxeTable/index';
-// import CFActivityView from '@/pages/other/cf-activity';
+// import DownloadView from '@/views/other/downloadPage';
+// import IframeView from '@/views/other/iframe/iframe';
+
+// import VxeTableView from '@/views/other/vxeTable/index';
 
 Vue.use(Router);
 const routes = [
@@ -44,46 +46,52 @@ const routes = [
         path: '/view/doc',
         name: 'ViewDoc',
         component: ViewDocView
-        // },
-        // {
-        //   path: '/OneHouse',
-        //   name: 'OneHouse',
-        //   component: OneHouseView
-        // },
-        // {
-        //   path: '/ThreeHouse',
-        //   name: 'ThreeHouse',
-        //   component: ThreeHouseView
-        // },
-        // {
-        //   path: '/ToiletWall',
-        //   name: 'ToiletWall',
-        //   component: ToiletWallView
-        // },
-        // {
-        //   path: '/Download',
-        //   name: 'Download',
-        //   component: DownloadView
-        // },
-        // {
-        //   path: '/IframePage',
-        //   name: 'IframePage',
-        //   component: IframeView
-        // },
-        // {
-        //   path: '/Kitchen',
-        //   name: 'Kitchen',
-        //   component: KitchenView
-        // },
-        // {
-        //   path: '/VxeTable',
-        //   name: 'VxeTable',
-        //   component: VxeTableView
-        // },
-        // {
-        //   path: '/CFActivity',
-        //   name: 'CFActivity',
-        //   component: CFActivityView
+      },
+      {
+        path: '/OneHouse',
+        name: 'OneHouse',
+        component: OneHouseView
+      },
+      {
+        path: '/ThreeHouse',
+        name: 'ThreeHouse',
+        component: ThreeHouseView
+      },
+      {
+        path: '/ToiletWall',
+        name: 'ToiletWall',
+        component: ToiletWallView
+      },
+      {
+        path: '/Kitchen',
+        name: 'Kitchen',
+        component: KitchenView
+      },
+      {
+        path: '/Box',
+        name: 'Box',
+        component: BoxView
+      },
+      // {
+      //   path: '/Download',
+      //   name: 'Download',
+      //   component: DownloadView
+      // },
+      // {
+      //   path: '/IframePage',
+      //   name: 'IframePage',
+      //   component: IframeView
+      // },
+
+      // {
+      //   path: '/VxeTable',
+      //   name: 'VxeTable',
+      //   component: VxeTableView
+      // },
+      {
+        path: '/CFActivity',
+        name: 'CFActivity',
+        component: CFActivityView
       }
     ]
   },

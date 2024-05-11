@@ -12,5 +12,62 @@
     "title": "首页配置",
     "view": "HomeSetting",
     "children": []
+  },
+  {
+    "name": "LifeDemo",
+    "icon": "logo",
+    "title": "生活（DEMO）",
+    "view": "LifeDemo",
+    "children": [
+      {
+        "name": "Decoration",
+        "icon": "logo",
+        "title": "装修",
+        "view": "Decoration",
+        "children": [
+          {
+            "name": "OneHouse",
+            "icon": "logo",
+            "title": "一居室布局",
+            "view": "OneHouse",
+            "children": []
+          },
+          {
+            "name": "ThreeHouse",
+            "icon": "logo",
+            "title": "三居室布局",
+            "view": "ThreeHouse",
+            "children": []
+          },
+          {
+            "name": "ToiletWall",
+            "icon": "logo",
+            "title": "卫生间墙",
+            "view": "ToiletWall",
+            "children": []
+          },
+          {
+            "name": "Kitchen",
+            "icon": "logo",
+            "title": "厨房",
+            "view": "Kitchen",
+            "children": []
+          },
+          {
+            "name": "Box",
+            "icon": "logo",
+            "title": "林氏柜",
+            "view": "Box",
+            "children": []
+          }
+        ]
+      },
+      {
+        "name": "CFActivity",
+        "icon": "logo",
+        "title": "CF抽奖",
+        "view": "CFActivity"
+      }
+    ]
   }
 ]

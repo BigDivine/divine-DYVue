@@ -15,7 +15,7 @@
 </template>
 
 <script>
-  import DyListGroup from '@/components/dy-list-group.vue';
+  import DyListGroup from '@/components/common/dy-list-group.vue';
   import SourceLayout from './source-layout.vue';
 
   import SchemeOneLayout from './scheme-one-layout.vue';

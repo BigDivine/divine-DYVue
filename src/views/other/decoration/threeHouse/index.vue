@@ -15,7 +15,7 @@
 </template>
 
 <script>
-  import DyListGroup from '@/components/dy-list-group.vue';
+  import DyListGroup from '@/components/common/dy-list-group.vue';
   import LivingRoom from './living-room.vue';
   import Kitchen from './kitchen.vue';
   import Balcony from './balcony.vue';

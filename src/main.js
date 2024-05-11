@@ -1,4 +1,5 @@
 import 'babel-polyfill'; // 注意:这条引入要在 import Vue from ‘vue’ 之前
+// import Es6Promise from 'es6-promise';
 
 import Vue from 'vue';
 import ViewUI from 'view-design';
@@ -13,6 +14,8 @@ import { request } from './api/axiosPlugin';
 
 import App from './App';
 import CommonComponents from '@/components/common/index.js';
+// 高级的ES6语法兼容处理
+// Es6Promise.polyfill();
 
 Vue.use(VXETable);
 Vue.use(ViewUI);
