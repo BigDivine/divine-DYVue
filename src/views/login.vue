@@ -8,8 +8,8 @@
 ********************************************************************-->
 <template>
   <div class="Index">
-    <div style="width: 100%; height: 100%; position: absolute">
-      <dy-star-bling style="width: 100%; height: 100%" :starNum="80"></dy-star-bling>
+    <div style="position: absolute;inset:0;">
+      <dy-star-bling :starNum="50"></dy-star-bling>
     </div>
     <div class="contain">
       <transition

@@ -31,21 +31,29 @@ export default {
   mounted() {},
   methods: {
     getStarSize(i) {
+      let style = { position: 'absolute' };
       //星星的最大尺寸是30*30
       let size = Math.random() * 40;
+      style['width'] = size + 'px';
+      style['height'] = size + 'px';
+
       //星星的初始位置是屏幕的0,0处
-      let top = Math.random() * 100 + '%';
-      let left = Math.random() * 100 + '%';
+      let top = Math.random() * 100;
+      let left = Math.random() * 100;
+      while (top > 90 || left > 90) {
+        if (top > 90) {
+          top = Math.random() * 100;
+        }
+        if (left > 90) {
+          left = Math.random() * 100;
+        }
+      }
+      style['top'] = top + '%';
+      style['left'] = left + '%';
       //星星的动画持续时间3s
       let delay = Math.random() * 3 + 's';
-      return {
-        position: 'absolute',
-        width: size + 'px',
-        height: size + 'px',
-        top,
-        left,
-        animationDelay: delay
-      };
+      style['animationDelay'] = delay;
+      return style;
     }
   }
 };
