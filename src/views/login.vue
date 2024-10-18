@@ -8,22 +8,38 @@
 ********************************************************************-->
 <template>
   <div class="Index">
+    <div style="width: 100%; height: 100%; position: absolute">
+      <dy-star-bling style="width: 100%; height: 100%" :starNum="80"></dy-star-bling>
+    </div>
     <div class="contain">
-      <transition name="login" @after-leave="afterLeave">
+      <transition
+        name="login"
+        @after-leave="afterLeave">
         <DyLogin
           v-if="type === 'login'"
           class="formStyle"
           @phone="phone"
           @reset="reset"
-          @register="register"
-        >
+          @register="register">
         </DyLogin>
       </transition>
-      <transition name="register" @after-leave="afterLeave">
-        <DyRegister v-if="type === 'register'" class="formStyle" @back="backToLogin"> </DyRegister>
+      <transition
+        name="register"
+        @after-leave="afterLeave">
+        <DyRegister
+          v-if="type === 'register'"
+          class="formStyle"
+          @back="backToLogin">
+        </DyRegister>
       </transition>
-        <transition name="phone" @after-leave="afterLeave">
-        <DyRegister v-if="type === 'phone'" class="formStyle" @back="backToLogin"> </DyRegister>
+      <transition
+        name="phone"
+        @after-leave="afterLeave">
+        <DyRegister
+          v-if="type === 'phone'"
+          class="formStyle"
+          @back="backToLogin">
+        </DyRegister>
       </transition>
     </div>
   </div>
@@ -74,6 +90,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .Index {
+  position: relative;
   width: 100%;
   height: 100%;
   display: flex;
@@ -83,6 +100,7 @@ export default {
   background-size: 200% 100%;
   animation: bglinear 10s ease infinite;
   .contain {
+    background: $dy-primary-color-rgba;
     animation: blink 5s infinite alternate;
     border-radius: 10px;
     .formStyle {
@@ -109,7 +127,6 @@ export default {
       background-position: 0 100%;
     }
   }
-
   @keyframes blink {
     0% {
       box-shadow: 0 0px 15px #7a7a7a;

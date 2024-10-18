@@ -9,6 +9,8 @@ import VXETable from 'vxe-table';
 import '@/assets/theme/view-design-theme.less';
 import '@/assets/theme/vxe-table-theme.scss';
 
+// import Carousel3d from 'vue-carousel-3d';
+
 import router from './router';
 import { request } from './api/axiosPlugin';
 
@@ -19,6 +21,7 @@ import CommonComponents from '@/components/common/index.js';
 
 Vue.use(VXETable);
 Vue.use(ViewUI);
+// Vue.use(Carousel3d);
 
 const componentKeys = Object.keys(CommonComponents);
 componentKeys.forEach((key) => {

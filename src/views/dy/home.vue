@@ -20,10 +20,14 @@
       <div class="HomeCell">
         <dy-clock></dy-clock>
       </div>
-      <div class="HomeCell"></div>
+      <div class="HomeCell">
+        <dy-circle-swiper></dy-circle-swiper>
+      </div>
     </div>
     <div class="HomeGroup">
-      <div class="HomeCell"></div>
+      <div class="HomeCell">
+        <dy-star-bling></dy-star-bling>
+      </div>
       <div class="HomeCell"></div>
     </div>
   </div>
@@ -57,10 +61,11 @@ export default {
     .HomeCell {
       flex: 1;
       overflow: hidden;
-      .HomeCellContain {
-        height: 100%;
-        width: 100%;
-      }
+
+      // .HomeCellContain {
+      //   height: 100%;
+      //   width: 100%;
+      // }
     }
   }
 }
