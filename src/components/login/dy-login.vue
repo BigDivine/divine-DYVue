@@ -9,7 +9,10 @@
 <template>
   <div class="DyLogin">
     <div class="loginTitle"><img src="/static/logo.png" /> 用户登录</div>
-    <Form ref="userForm" :model="userInfo" :rules="loginRule">
+    <Form
+      ref="userForm"
+      :model="userInfo"
+      :rules="loginRule">
       <FormItem prop="userName">
         <Row>
           <Col span="24">
@@ -17,8 +20,7 @@
               type="text"
               prefix="ios-contact"
               v-model="userInfo.userName"
-              placeholder="请输入用户名"
-            />
+              placeholder="请输入用户名" />
           </Col>
         </Row>
       </FormItem>
@@ -30,21 +32,45 @@
               prefix="ios-lock"
               password
               v-model="userInfo.userPass"
-              placeholder="请输入密码"
-            />
+              placeholder="请输入密码" />
           </Col>
         </Row>
       </FormItem>
     </Form>
     <div class="downInput">
-      <div class="phoneLogin" @click="phone()">手机验证码登录</div>
-      <div class="missPass" @click="reset()">忘记密码？</div>
+      <div
+        class="phoneLogin"
+        @click="phone()">
+        手机验证码登录
+      </div>
+      <div
+        class="missPass"
+        @click="reset()">
+        忘记密码？
+      </div>
     </div>
-    <Button long ghost @click="loginIn()">登录</Button>
-    <div class="register" @click="register()">立即注册</div>
+    <Button
+      long
+      ghost
+      @click="loginIn()"
+      >登录</Button
+    >
+    <div
+      class="register"
+      @click="register()">
+      立即注册
+    </div>
     <div class="checkContain">
-      <Checkbox class="saveName" v-model="saveUserInfo">记住账号</Checkbox>
-      <Checkbox class="savePass" v-model="saveUserInfo">记住密码</Checkbox>
+      <Checkbox
+        class="saveName"
+        v-model="saveUserInfo"
+        >记住账号</Checkbox
+      >
+      <Checkbox
+        class="savePass"
+        v-model="saveUserInfo"
+        >记住密码</Checkbox
+      >
     </div>
     <div class="oauthTitleContain">
       <div class="line"></div>
@@ -61,8 +87,15 @@
       <div class="oauthItem">
         <img src="@/assets/icons/ic_oauth_login_sina.png" />
       </div>
-      <div class="oauthItem" @click="adminLoginIn()">
+      <div
+        class="oauthItem"
+        @click="adminLoginIn()">
         <img src="/static/logo.png" />
+      </div>
+      <div
+        class="oauthItem"
+        @click="offlineLoginIn()">
+        <span style="color: #fff">离线</span>
       </div>
     </div>
   </div>
@@ -107,6 +140,9 @@ export default {
         userPass: 'admin'
       };
       this.loginRequest(params);
+    },
+    offlineLoginIn() {
+      this.$router.push({ path: '/dy' });
     },
     loginIn() {
       this.$refs.userForm.validate(async (valid) => {
@@ -211,6 +247,7 @@ export default {
     display: flex;
     align-items: center;
     .oauthItem {
+      cursor: pointer;
       flex: 1;
       text-align: center;
       img {
@@ -218,6 +255,9 @@ export default {
         height: 40px;
         margin: 0 10px;
       }
+    }
+    .oauthItem:hover {
+      transform: scale(1.2);
     }
   }
 }

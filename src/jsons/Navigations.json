@@ -67,6 +67,12 @@
         "icon": "logo",
         "title": "CF抽奖",
         "view": "CFActivity"
+      },
+      {
+        "name": "CFActivity",
+        "icon": "logo",
+        "title": "DEMO",
+        "view": "CFActivity"
       }
     ]
   }

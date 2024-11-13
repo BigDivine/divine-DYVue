@@ -11,7 +11,7 @@
     <div style="position: absolute;inset:0;">
       <dy-star-bling :starNum="50"></dy-star-bling>
     </div>
-    <div class="contain">
+    <div class="contain"> 
       <transition
         name="login"
         @after-leave="afterLeave">
@@ -35,11 +35,11 @@
       <transition
         name="phone"
         @after-leave="afterLeave">
-        <DyRegister
+        <DyPhone
           v-if="type === 'phone'"
           class="formStyle"
           @back="backToLogin">
-        </DyRegister>
+        </DyPhone>
       </transition>
     </div>
   </div>
@@ -100,7 +100,8 @@ export default {
   background-size: 200% 100%;
   animation: bglinear 10s ease infinite;
   .contain {
-    background: $dy-primary-color-rgba;
+     position: absolute;
+ background: $dy-primary-color-rgba;
     animation: blink 5s infinite alternate;
     border-radius: 10px;
     .formStyle {

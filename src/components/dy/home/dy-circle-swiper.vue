@@ -11,6 +11,22 @@
     ref="DyCircleSwiper"
     class="DyCircleSwiper"
     :style="containStyle()">
+    <div class="topEarthContain">
+      <div class="earth">这是转动的地球</div>
+    </div>
+    <div class="bottomCircleContain">
+      <div class="contain">
+        <div class="oneRound">
+          <img src="@/assets/images/im_one_round.png" />
+        </div>
+        <div class="twoRound">
+          <img src="@/assets/images/im_two_round.png" />
+        </div>
+        <div class="threeRound">
+          <img src="@/assets/images/im_three_round.png" />
+        </div>
+      </div>
+    </div>
     <div
       ref="DyCircleSwiperContain"
       class="DyCircleSwiperContain">
@@ -146,11 +162,124 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  .topEarthContain {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .earth {
+      width: 30%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: #f00;
+      font-size: 30px;
+      color: #fff;
+    }
+  }
+  .bottomCircleContain {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 30%;
+    .contain {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      .oneRound {
+        position: absolute;
+        bottom: 0;
+        left: 10%;
+        top: 0;
+        right: 10%;
+        animation: roundOneGradient 3s linear infinite;
+      }
+      .twoRound {
+        position: absolute;
+        bottom: 20%;
+        left: 25%;
+        top: 0;
+        right: 25%;
+        animation: roundTwoGradient 3s linear infinite;
+      }
+      .threeRound {
+        position: absolute;
+        bottom: 40%;
+        left: 30%;
+        top: 0;
+        right: 30%;
+        animation: roundThreeGradient 3s linear infinite;
+      }
+      img {
+        height: 100%;
+        width: 100%;
+      }
+      @keyframes roundOneGradient {
+        0% {
+          opacity: 0;
+        }
+        20% {
+          opacity: 1;
+        }
+        40% {
+          opacity: 1;
+        }
+        60% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+      @keyframes roundTwoGradient {
+        0% {
+          opacity: 0;
+        }
+        20% {
+          opacity: 0;
+        }
+        40% {
+          opacity: 1;
+        }
+        60% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+      @keyframes roundThreeGradient {
+        0% {
+          opacity: 0;
+        }
+        20% {
+          opacity: 0;
+        }
+        40% {
+          opacity: 0;
+        }
+        60% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+    }
+  }
   .DyCircleSwiperContain {
     position: relative;
     border-radius: 50%;
+    border:5px solid #ccc;
     transform-style: preserve-3d;
-    transform: rotateX(70deg);
+    transform: rotateX(70deg)  rotateY(-15deg);
     .DyCircleSwiperItem {
       position: absolute;
       height: 40px;
@@ -179,10 +308,10 @@ export default {
     border-radius: var(--contain-radius);
     padding: var(--contain-border-width);
     /* 边框宽度 */
-    background: linear-gradient(180deg, $dy-primary-color-rgba, $dy-primary-color);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: destination-out;
-    mask-composite: exclude;
+    // background: linear-gradient(180deg, $dy-primary-color-rgba, $dy-primary-color);
+    // -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    // -webkit-mask-composite: destination-out;
+    // mask-composite: exclude;
   }
   .DyCircleSwiperItem1 {
     position: absolute;
