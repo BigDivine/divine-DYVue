@@ -5,13 +5,11 @@ import Vue from 'vue';
 import ViewUI from 'view-design';
 import VXETable from 'vxe-table';
 
-// import '@/assets/theme/dy.less';
 import '@/assets/theme/view-design-theme.less';
 import '@/assets/theme/vxe-table-theme.scss';
 
-// import Carousel3d from 'vue-carousel-3d';
-
 import router from './router';
+import store from './store';
 import { request } from './api/axiosPlugin';
 
 import App from './App';
@@ -21,20 +19,22 @@ import CommonComponents from '@/components/common/index.js';
 
 Vue.use(VXETable);
 Vue.use(ViewUI);
-// Vue.use(Carousel3d);
 
 const componentKeys = Object.keys(CommonComponents);
 componentKeys.forEach((key) => {
   Vue.component(key, CommonComponents[key]);
 });
 
-Vue.config.productionTip = false;
+// Vue.config.productionTip = false;
 
 Vue.prototype.$http = request;
+// 高德地图web服务key：账号（rjdnyzl@163.com）
+Vue.prototype.AMapKey = '8a181b3e412a152de0b51e9be8886c37';
 
 // eslint-disable-next-line no-new
 new Vue({
   el: '#app',
+  store,
   router,
   components: { App },
   template: '<App/>'

@@ -116,8 +116,8 @@
         text-align: center;
         line-height: 60px;
         border-radius: 5px;
-        background-color: aquamarine;
-        background-image: url('../../../assets/icons/ic_date_bg.png');
+        background-color: $dy-primary-color;
+        // background-image: url('../../../assets/icons/ic_date_bg.png');
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;

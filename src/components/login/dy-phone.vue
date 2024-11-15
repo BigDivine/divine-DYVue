@@ -59,6 +59,8 @@
 </template>
 
 <script>
+import { LoginApi } from '@/api';
+
 export default {
   name: 'DyPhone',
   components: {},

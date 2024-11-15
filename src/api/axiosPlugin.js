@@ -1,14 +1,14 @@
 /* eslint-disable */
 import Axios from 'axios';
 let Config = {
-  axiosTimeout: 90000,
+  axiosTimeout: 90000
 };
 export const axios = Axios.create({
   headers: {
     'Content-Type': 'application/json;charset=UTF-8',
-    'X-Requested-With': 'XMLHttpRequest',
+    'X-Requested-With': 'XMLHttpRequest'
   },
-  timeout: Config.axiosTimeout,
+  timeout: Config.axiosTimeout
 });
 
 // 在发送请求之前
@@ -40,7 +40,9 @@ export function request(method, url, params) {
   } else {
     headers = { 'Content-Type': 'application/x-www-form-urlencoded' };
   }
-  headers['Authorization'] = sessionStorage.token;
+  if (sessionStorage.token) {
+    headers['Authorization'] = sessionStorage.token;
+  }
   let promise;
   if (method === 'get') {
     promise = axios.get(url, { params, headers });
@@ -52,13 +54,11 @@ export function request(method, url, params) {
   return new Promise((resolve) => {
     promise.then(
       (res) => {
-        console.log('apiUtils-res', url);
-        console.log('apiUtils-res', res);
+        console.log('apiUtils-success', url, res);
         resolve(res);
       },
       (error) => {
-        console.log('apiUtils-error', url);
-        console.log('apiUtils-error', error);
+        console.log('apiUtils-failed', url, error);
         resolve(error.response);
       }
     );

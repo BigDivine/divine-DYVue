@@ -1,1 +1,0 @@
-npm i axios view-design vxe-table@legacy xe-utils -D

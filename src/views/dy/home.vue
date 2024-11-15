@@ -13,7 +13,7 @@
         <dy-hi></dy-hi>
       </div>
       <div class="HomeCell">
-        <dy-lottery></dy-lottery>
+        <!-- <dy-lottery></dy-lottery> -->
       </div>
     </div>
     <div class="HomeGroup">
@@ -21,12 +21,13 @@
         <dy-clock></dy-clock>
       </div>
       <div class="HomeCell">
-        <dy-circle-swiper></dy-circle-swiper>
+        <!-- <dy-circle-swiper></dy-circle-swiper> -->
       </div>
     </div>
     <div class="HomeGroup">
       <div class="HomeCell">
-        <dy-star-bling></dy-star-bling>
+        <!-- <dy-star-bling></dy-star-bling> -->
+        <dy-weather></dy-weather>
       </div>
       <div class="HomeCell"></div>
     </div>
