@@ -8,17 +8,25 @@
         </div>
       </div>
       <div class="indexHeaderThird">
-        <div class="indexLinkStyle" v-for="(item, index) in thirdLinkData" :key="index">
+        <div
+          class="indexLinkStyle"
+          v-for="(item, index) in thirdLinkData"
+          :key="index">
           <div class="iconStyle">
             <img :src="require('@/assets/icons/ic_third_' + item.icon + '.png')" />
           </div>
-          <a :href="item.url" target="_blank">
+          <a
+            :href="item.url"
+            target="_blank">
             {{ item.title }}
           </a>
         </div>
       </div>
     </div>
-    <DYMenu :navList="NavigationsData" @item-click="menuItemClick"> </DYMenu>
+    <DYMenu
+      :navList="NavigationsData"
+      @item-click="menuItemClick">
+    </DYMenu>
     <div class="indexContent">
       <div class="indexMain">
         <router-view />
@@ -40,15 +48,12 @@ export default {
   components: { DYMenu },
   data() {
     return { thirdLinkData, NavigationsData };
-  },
-  created() {
-    this.menuItemClick({
-      view: 'Home'
-    });
+
   },
   methods: {
     menuItemClick(item) {
-      this.$router.push({ path: `/${item.view}`, name: `${item.view}` });
+      localStorage.setItem('menuActive', item.view);
+      this.$router.replace({ path: `/${item.view}`, name: `${item.view}` });
     }
   }
 };

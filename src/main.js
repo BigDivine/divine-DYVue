@@ -9,7 +9,7 @@ import '@/assets/theme/view-design-theme.less';
 import '@/assets/theme/vxe-table-theme.scss';
 
 import router from './router';
-import store from './store';
+// import store from './store';
 import { request } from './api/axiosPlugin';
 
 import App from './App';
@@ -34,7 +34,7 @@ Vue.prototype.AMapKey = '8a181b3e412a152de0b51e9be8886c37';
 // eslint-disable-next-line no-new
 new Vue({
   el: '#app',
-  store,
+  // store,
   router,
   components: { App },
   template: '<App/>'

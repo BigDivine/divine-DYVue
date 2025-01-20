@@ -62,11 +62,13 @@
 </template>
 
 <script>
+import { dateFormat } from '@/utils/dateFormat';
 export default {
   name: 'DyWeather',
   components: {},
   data() {
     return {
+      formatDate: '',
       province: '',
       city: '',
       // adcode:'',
@@ -79,16 +81,50 @@ export default {
     };
   },
   created() {
-    this.getLocationByIp('');
+    let curDate = new Date();
+    let formatDate = dateFormat(curDate, 'yyyy-MM-dd');
+    let curHour = parseInt(dateFormat(curDate, 'HH'));
+
+    let weatherDateLocal = this.getWeatherDataLocal('date');
+    if (weatherDateLocal && weatherDateLocal === formatDate) {
+      this.province = this.getWeatherDataLocal('province');
+      this.city = this.getWeatherDataLocal('city');
+      this.adcode = this.getWeatherDataLocal('adcode');
+      this.rectangle = this.getWeatherDataLocal('rectangle');
+      this.forecastWeather = this.getWeatherDataLocal('forecastWeather');
+
+      let oldLiveData = this.getWeatherDataLocal('liveWeather') || {};
+      if (!oldLiveData.time && oldLiveData.time - curHour > 4) {
+        this.getLiveWeather(this.adcode, curHour);
+      } else {
+        this.liveWeather = oldLiveData.data;
+      }
+    } else {
+      console.log('当前时间：', formatDate);
+      this.saveWeatherDataLocal('date', formatDate);
+      this.getLocationByIp();
+      // this.getLocationByIp(location.hostname);
+    }
   },
   mounted() {},
   methods: {
+    getWeatherDataLocal(key) {
+      let weatherDataToday = localStorage.getItem('weatherDataToday') || '{}';
+      let weatherData = JSON.parse(weatherDataToday);
+      return weatherData[key];
+    },
+    saveWeatherDataLocal(key, value) {
+      let weatherDataToday = localStorage.getItem('weatherDataToday') || '{}';
+      let weatherData = JSON.parse(weatherDataToday);
+      weatherData[key] = value;
+      localStorage.setItem('weatherDataToday', JSON.stringify(weatherData));
+    },
     async getLocationByIp(ip) {
       const {
         data: { adcode, city, info, infocode, province, rectangle, status }
       } = await this.$http(
         'get',
-        // `https://restapi.amap.com/v3/ip?ip=${location.hostname}&output=json&key=${this.AMapKey}`,
+        // `https://restapi.amap.com/v3/ip?ip=${ip}&output=json&key=${this.AMapKey}`,
         `https://restapi.amap.com/v3/ip?output=json&key=${this.AMapKey}`,
         ''
       );
@@ -103,6 +139,14 @@ export default {
           latitude: rectangle.split(',')[1],
           longitude: rectangle.split(',')[0]
         };
+        this.saveWeatherDataLocal('province', province);
+        this.saveWeatherDataLocal('city', city);
+        this.saveWeatherDataLocal('adcode', adcode);
+        this.saveWeatherDataLocal('rectangle', {
+          latitude: rectangle.split(',')[1],
+          longitude: rectangle.split(',')[0]
+        });
+
         this.getLiveWeather(adcode);
         this.getForecastWeather(adcode);
         // this.getLiveWeather('110000');
@@ -190,12 +234,13 @@ export default {
       console.log(status, count, info, infocode, forecasts);
       if (info === 'OK') {
         this.forecastWeather = forecasts[0].casts;
-        console.log(' this.forecastWeather ', this.forecastWeather);
+        this.saveWeatherDataLocal('forecastWeather', forecasts[0].casts);
+        console.log('this.forecastWeather', this.forecastWeather);
       } else {
         this.$message.error('获取预报天气失败');
       }
     },
-    async getLiveWeather(adcode) {
+    async getLiveWeather(adcode, HH) {
       const {
         data: { status, count, info, infocode, lives }
       } = await this.$http(
@@ -224,6 +269,11 @@ export default {
 
       if (info === 'OK') {
         this.liveWeather = lives[0];
+        let curHour = HH;
+        if (!curHour) {
+          curHour = parseInt(dateFormat(lives[0].reporttime, 'HH'));
+        }
+        this.saveWeatherDataLocal('liveWeather', { time: curHour, data: lives[0] });
       } else {
         this.$message.error('获取实时天气失败');
       }

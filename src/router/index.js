@@ -33,7 +33,7 @@ const routes = [
     component: IndexView,
     children: [
       {
-        path: 'home',
+        path: '',
         name: 'Home',
         component: HomeView
       },
