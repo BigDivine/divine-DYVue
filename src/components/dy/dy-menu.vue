@@ -63,6 +63,6 @@ export default {
   width: 100%;
   height: 40px;
   line-height: 40px;
-  background: linear-gradient(to right, $dy-primary-color, $dy-bg-color);
+  // background: linear-gradient(to right, $dy-primary-color, $dy-bg-color);
 }
 </style>

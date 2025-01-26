@@ -75,5 +75,12 @@
         "view": "CFActivity"
       }
     ]
+  },
+  {
+    "name": "Demo",
+    "icon": "logo",
+    "title": "DEMO",
+    "view": "Demo",
+    "children": []
   }
 ]

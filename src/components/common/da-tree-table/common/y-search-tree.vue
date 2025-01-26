@@ -12,21 +12,21 @@
 
 <template>
   <div class="YSearchTree">
-    <div v-if="mode !== 1 && !readOnly && showTool" class="YTreeTool">
+    <div
+      v-if="mode !== 1 && !readOnly && showTool"
+      class="YTreeTool">
       <div
         :class="
           toolStyle === 2 ? 'BigYTreeToolItem' : toolStyle === 1 ? 'YTreeToolItem' : 'YTreeToolItem'
         "
         v-for="(item, index) in tools"
-        :key="index"
-      >
+        :key="index">
         <Button
           class="YTreeToolItemBtn"
           size="small"
           type="primary"
           ghost
-          @click="toolClick(item, index)"
-        >
+          @click="toolClick(item, index)">
           {{ item.title }}
         </Button>
       </div>
@@ -37,8 +37,7 @@
       suffix="ios-search"
       placeholder="输入关键字查询（按名称）"
       style="margin-bottom: 10px"
-      v-model="searchKey"
-    />
+      v-model="searchKey" />
     <div class="YTreeContain">
       <div class="YTree">
         <Tree
@@ -46,8 +45,7 @@
           :load-data="loadData"
           :render="isCustomRender ? treeRender : renderContent"
           class="treeStyle"
-          @on-select-change="selectChange"
-        ></Tree>
+          @on-select-change="selectChange"></Tree>
       </div>
     </div>
   </div>
@@ -65,7 +63,7 @@ export default {
     toolStyle: { type: Number, default: 2 },
     isCustomRender: { type: Boolean, default: false },
     treeRender: { type: Function, default: (h, { root, node, data }) => h() },
-    // loadData: { type: Function, default: (item, callback) => f() },
+    // loadData: { type: Function, default: (item, callback) => h() },
     data: { type: Array, default: () => [] },
     readOnly: { type: Boolean, default: false }
   },
@@ -119,7 +117,8 @@ export default {
                 'div',
                 {
                   class: {
-                    treeNodeTitle: true
+                    treeNodeTitle: !data.selected,
+                    treeNodeTitleSelected: data.selected
                   }
                 },
                 data.title || data.name
@@ -235,6 +234,7 @@ export default {
         .ivu-tree-title {
           //将节点title横向铺满并且防止出现多余横向滚动条
           width: calc(100% - 20px);
+          padding: 2px 4px;
         }
         li {
           margin: 3px 0 0 0;
@@ -249,6 +249,17 @@ export default {
           flex: 1;
           font-size: 14px;
           color: #080808;
+        }
+        .treeNodeTitleSelected {
+          flex: 1;
+          font-size: 14px;
+          color: var(--primary-color);
+        }
+        .treeNodeTitle:hover {
+          color: var(--primary-color);
+        }
+        .treeNodeTitleSelected:hover {
+          color: var(--primary-color);
         }
         .treeNodeAction {
           position: absolute;

@@ -48,7 +48,6 @@ export default {
   components: { DYMenu },
   data() {
     return { thirdLinkData, NavigationsData };
-
   },
   methods: {
     menuItemClick(item) {
@@ -66,8 +65,9 @@ export default {
   display: flex;
   flex-direction: column;
   .indexHeader {
-    height: 80px;
+    height: 100px;
     width: 100%;
+    padding: 10px 0;
     display: flex;
     background: linear-gradient(to right, $dy-primary-color, $dy-bg-color);
     .indexHeaderContainer {

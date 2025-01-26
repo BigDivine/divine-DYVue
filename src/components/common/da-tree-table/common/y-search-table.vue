@@ -33,7 +33,6 @@
     <div ref="DaTreeTableTableDom" class="YSearchTableTable">
       <Table
         border
-        size="small"
         :loading="loading"
         :height="tableHeight"
         :row-class-name="rowClassName"
