@@ -1,5 +1,8 @@
 /* eslint-disable */
 import Axios from 'axios';
+
+let baseUrl = '';
+
 let Config = {
   axiosTimeout: 90000
 };
@@ -31,24 +34,44 @@ axios.interceptors.response.use(
   }
 );
 
-export function request(method, url, params) {
-  let headers;
-  if (typeof params === 'string') {
-    headers = { 'Content-Type': 'application/json;charset=UTF-8' };
-  } else if (params instanceof FormData) {
-    headers = { 'Content-Type': 'multipart/form-data' };
+export function request(method, url, params, headers) {
+  console.log('request', method, url, params, headers);
+  let requestUrl = baseUrl + url;
+  let localHeaders;
+  if (headers) {
+    localHeaders = headers;
   } else {
-    headers = { 'Content-Type': 'application/x-www-form-urlencoded' };
+    if (typeof params === 'string') {
+      localHeaders = { 'Content-Type': 'application/json;charset=UTF-8' };
+    } else if (params instanceof FormData) {
+      localHeaders = { 'Content-Type': 'multipart/form-data' };
+    } else {
+      localHeaders = { 'Content-Type': 'application/x-www-form-urlencoded' };
+    }
   }
-  if (sessionStorage.token) {
-    headers['Authorization'] = sessionStorage.token;
+
+  // localHeaders['Authorization'] = '7c9d0769-cf42-4ccf-871d-dc202115f72f';
+  let session_token = localStorage.getItem('session_token');
+  if (session_token) {
+    let session_token_obj = JSON.parse(atob(session_token));
+    let token = session_token_obj[0].token;
+    localHeaders['Authorization'] = token;
   }
   let promise;
   if (method === 'get') {
-    promise = axios.get(url, { params, headers });
+    promise = axios.get(requestUrl, { params, headers: localHeaders });
+  }
+  if (method === 'delete') {
+    promise = axios.delete(requestUrl, { params, headers: localHeaders });
   }
   if (method === 'post') {
-    promise = axios.post(url, params, { headers });
+    promise = axios.post(requestUrl, params, { headers: localHeaders });
+  }
+  if (method === 'put') {
+    promise = axios.put(requestUrl, params, { headers: localHeaders });
+  }
+  if (method === 'patch') {
+    promise = axios.patch(requestUrl, params, { headers: localHeaders });
   }
 
   return new Promise((resolve) => {
